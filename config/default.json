@@ -1,0 +1,3 @@
+{
+    "mongoURI": "mongodb://med:med@contact-shard-00-00-smxel.mongodb.net:27017,contact-shard-00-01-smxel.mongodb.net:27017,contact-shard-00-02-smxel.mongodb.net:27017/test?ssl=true&replicaSet=Contact-shard-0&authSource=admin&retryWrites=true&w=majority"
+}
