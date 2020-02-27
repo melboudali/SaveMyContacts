@@ -1,0 +1,21 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "contact keeper backend",
+  "main": "Server.js",
+  "scripts": {
+    "start": "nodemon Server.js",
+    "run": "pm2 start Server.js --watch",
+    "stop": "pm2 stop all"
+  },
+  "author": "med",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^4.0.0",
+    "config": "^3.3.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.2"
+  }
+}
