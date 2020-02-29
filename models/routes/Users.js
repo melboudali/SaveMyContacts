@@ -49,14 +49,14 @@ router.post(
       await user.save();
       //Create JWT token to sign in
       const payload = { user: { id: user.id } };
-      
+      //Generate jwt token and send it using
       jwt.sign(
         payload,
         config.get("jwtSecret"),
         { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;
-          res.json({token});
+          res.json({ token });
         }
       );
     } catch (error) {

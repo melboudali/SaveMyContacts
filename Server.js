@@ -4,10 +4,10 @@ const connectDB = require("./config/db");
 
 const PORT = process.env.PORT || 5000;
 
-app.use("/", require("./models/routes/Index"));
-app.use("/api/users", require("./models/routes/Users"));
-app.use("/api/auth", require("./models/routes/Auth"));
-app.use("/api/contacts", require("./models/routes/Contacts"));
+app.use("/", require("./models/Routes/Index"));
+app.use("/api/users", require("./models/Routes/Users"));
+app.use("/api/auth", require("./models/Routes/Auth"));
+app.use("/api/contacts", require("./models/Routes/Contacts"));
 
 //connect dtabase
 connectDB();
