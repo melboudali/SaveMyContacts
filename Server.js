@@ -12,4 +12,7 @@ app.use("/api/contacts", require("./models/Routes/Contacts"));
 //connect dtabase
 connectDB();
 
+app.get("*", (req, res) => {
+  res.status(404).json({ msg: "Not Found" });
+});
 app.listen(PORT, () => console.log("Server Conected"));

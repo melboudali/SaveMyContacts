@@ -10,9 +10,9 @@ module.exports = (req, res, next) => {
     return res.status(401).json({ msg: "No Token, Authorization Denied" });
   //if we have a token lets verify then
   try {
-    //decoding our token and get the real id 
+    //decoding our token and get the real id
     const decodedID = jwt.verify(token, config.get("jwtSecret"));
-    //give the decoded id to the created userId in req 
+    //give the decoded id to the created userId in req
     req.userID = decodedID.user.id;
     //then next
     next();

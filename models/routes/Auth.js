@@ -15,7 +15,7 @@ const { check, validationResult } = require("express-validator");
 //@access   Private
 router.get("/", auth, async (req, res) => {
   try {
-    const userInfos = await User.findById(req.userId).select("-password");
+    const userInfos = await User.findById(req.userID).select("-password");
     res.json(userInfos);
   } catch (error) {
     console.error(error);
@@ -56,7 +56,7 @@ router.post(
       jwt.sign(
         payload,
         config.get("jwtSecret"),
-        { expiresIn: 360000 },
+        { expiresIn: 36000 },
         (err, token) => {
           if (err) throw err;
           res.json({ token });
