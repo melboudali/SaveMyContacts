@@ -36,7 +36,7 @@ const State = props => {
         name: "simo3",
         email: "simo3@gmail.com",
         phone: "3333",
-        type: "personal"
+        type: "professional"
       },
       {
         id: 4,
@@ -58,7 +58,7 @@ const State = props => {
   //Clear Filter
 
   return (
-    <Context.Provider values={{ contacts: state.contacts }}>
+    <Context.Provider value={{ contacts: state.contacts }}>
       {props.children}
     </Context.Provider>
   );

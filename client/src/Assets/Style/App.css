@@ -36,3 +36,37 @@ body {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+
+.contactType{
+  color: #eee;
+  padding: 3px 10px;
+  border-radius: 5px;
+}
+
+.typePer{
+  background-color: rgb(32, 136, 79);
+}
+
+.typePro{
+  background-color: rgb(87, 50, 146);
+}
+
+.cardIcons{
+  width: 10px !important;
+  height: 100% !important;
+}
+
+.email{
+  margin: 0  !important;
+  padding: 0 !important;
+  margin-left: 5px !important;
+  font-weight: 500;
+  font-size: .9rem;
+}
+.phone{
+  margin: 0  !important;
+  padding: 0 !important;
+  margin-left: 5px !important;
+  font-weight: 500;
+  font-size: .9rem;
+}
