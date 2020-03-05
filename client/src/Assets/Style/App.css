@@ -7,6 +7,32 @@ body {
   text-align: center;
 }
 
-.MuiFormLabel-root .Mui-focused {
-  color: "red";
+.NavLink {
+  margin-right: 10px !important;
+  color: #eee !important;
+  font-weight: 500 !important;
+  transition: all 1s !important;
+}
+
+.NavLink:hover {
+  color: rgb(255, 255, 255) !important;
+  background-color: #c04441 !important;
+}
+
+.navICons {
+  width: 20px !important;
+  margin-right: 5px !important;
+}
+
+.LinkText {
+  font-size: .9rem !important;
+  margin-top: 1px !important;
+}
+
+.LinkContainer {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }

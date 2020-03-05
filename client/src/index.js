@@ -1,5 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import State from "./Components/Context/Context/State";
+import App from "./App";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <State>
+    <App />
+  </State>,
+  document.getElementById("root")
+);
