@@ -25,7 +25,7 @@ body {
 }
 
 .LinkText {
-  font-size: .9rem !important;
+  font-size: 0.9rem !important;
   margin-top: 1px !important;
 }
 
@@ -37,36 +37,127 @@ body {
   transform: translateY(-50%);
 }
 
-.contactType{
-  color: #eee;
+.contactType {
+  color: rgb(255, 255, 255);
   padding: 3px 10px;
   border-radius: 5px;
 }
 
-.typePer{
-  background-color: rgb(32, 136, 79);
+.typePer {
+  background-color: #ff5cab;
 }
 
-.typePro{
-  background-color: rgb(87, 50, 146);
+.typePro {
+  background-color: #fd9b54;
 }
 
-.cardIcons{
+.cardIcons {
   width: 10px !important;
   height: 100% !important;
 }
 
-.email{
-  margin: 0  !important;
+.email {
+  margin: 0 !important;
   padding: 0 !important;
   margin-left: 5px !important;
   font-weight: 500;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
-.phone{
-  margin: 0  !important;
+.phone {
+  margin: 0 !important;
   padding: 0 !important;
   margin-left: 5px !important;
   font-weight: 500;
-  font-size: .9rem;
+  font-size: 0.9rem;
+}
+
+.MuiCardContent-root {
+  padding: 10px 10px 0 10px !important;
+}
+.MuiCardActions-root {
+  padding: 2px !important;
+}
+.MuiIconButton-root {
+  padding: 8px !important;
+}
+
+.addConHeader{
+  text-align: center;
+  color: #6b6b6b;
+  margin: 10px 0 !important;
+}
+
+.addConForm {
+  padding: 15px !important;
+}
+
+.primaryBtn {
+  background: linear-gradient(to right, #ee0979, #ff6a00);
+  transition: all 0.5s !important;
+  margin: 15px 0 !important;
+  opacity: 0.8;
+}
+
+.clearBtn {
+  background-color: #c04441 !important;
+  transition: all 0.5s !important;
+  margin: 0 !important;
+  opacity: 0.8;
+}
+
+.primaryBtn:hover, .clearBtn:hover {
+  opacity: 1;
+}
+
+.textBtn {
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.75);
+  font-size: 0.8rem;
+  margin-top: 2px;
+  color: #eee;
+}
+
+.required {
+  color: red;
+  font-size: 1rem;
+}
+
+.addConInput {
+  margin-bottom: 5px !important;
+}
+
+.addConInput label {
+  color: #6b6b6b !important;
+}
+
+.addConInput label.Mui-focused {
+  color: #9c9c9c !important;
+}
+
+.addConInput .MuiInputBase-root {
+  color: #6b6b6b;
+}
+
+.addConInput .MuiInput-underline:before {
+  border-bottom-color: #df5858 !important;
+}
+
+.addConInput .MuiInput-underline:hover::after {
+  border-bottom-color: #00f396;
+}
+
+.addConInput .MuiInput-underline:hover::before {
+  border-bottom-color: #df5858 !important;
+}
+
+.addConInput .MuiInput-underline:after {
+  border-bottom-color: rgb(48, 180, 108);
+}
+
+
+.conType{
+  margin-top: 15px !important;
+}
+
+.radioBtn{
+  color: #f34d00;
 }

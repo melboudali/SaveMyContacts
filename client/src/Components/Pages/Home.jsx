@@ -1,17 +1,12 @@
-import React, { Fragment, useContext, useEffect } from "react";
-import Navbar from "../Layouts/Nav";
-import Container from "@material-ui/core/Container";
-import SignCont from "../SignComp/SignContainer";
-import About from "../Pages/About";
+import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Context from "../Context/Context/Context";
-import contacts from "../Contacts/Contacts";
+import Navbar from "../Layouts/Nav";
+import SignCont from "../SignComp/SignContainer";
+import Contacts from "../Contacts/Contacts";
+import About from "../Pages/About";
+import Container from "@material-ui/core/Container";
 
 const Home = () => {
-  const context = useContext(Context);
-  useEffect(() => {
-    console.log(context.contacts);
-  }, []);
   return (
     <Router>
       <Fragment>
@@ -20,7 +15,7 @@ const Home = () => {
           <Switch>
             <Route exact path="/" component={SignCont} />
             <Route exact path="/about" component={About} />
-            <Route exact path="/contacts" component={contacts} />
+            <Route exact path="/contacts" component={Contacts} />
           </Switch>
         </Container>
       </Fragment>

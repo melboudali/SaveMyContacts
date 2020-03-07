@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import Paper from "@material-ui/core/Paper";
 import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import Avatar from "@material-ui/core/Avatar";
+import Context from "../Context/Context/Context";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import CardActions from "@material-ui/core/CardActions";
@@ -12,39 +11,51 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import AlternateEmailIcon from "@material-ui/icons/AlternateEmail";
 import PhoneIcon from "@material-ui/icons/Phone";
-import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
+import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 
-const ContactItem = ({ contact: { id, name, email, phone, type } }) => {
+const ContactItem = ({ contact }) => {
+  const { id, name, email, phone, type } = contact;
+  const context = useContext(Context);
+  const { deleteContact, setCurrent, clearCurrent } = context;
+  const onSetCurrent = () => {
+    setCurrent(contact);
+  };
+  const onDeleteContact = () => {
+    deleteContact(id);
+    clearCurrent();
+  };
   return (
-    <div style={{ marginTop: "20px" }}>
-      <Paper elevation={3}>
+    <div>
+      <Paper elevation={3} style={{ marginBottom: "10px" }}>
         <Card>
           <CardContent>
-          <Typography
-                variant="caption"
-                className={`contactType ${
-                  type === "personal" ? "typePer" : "typePro"
-                }`}
-                style={{float: "right"}}
-              >
-                {type.charAt(0).toUpperCase() + type.slice(1)}
-              </Typography>
-              <Typography>
-              <AssignmentIndIcon className="cardIcons"/><span className="email">Name: {name}</span>
+            <Typography
+              variant="caption"
+              className={`contactType ${
+                type === "Personal" ? "typePer" : "typePro"
+              }`}
+              style={{ float: "right" }}
+            >
+              {type.charAt(0).toUpperCase() + type.slice(1)}
             </Typography>
             <Typography>
-              <AlternateEmailIcon className="cardIcons"/><span className="email">Email: {email}</span>
+              <AssignmentIndIcon className="cardIcons" />
+              <span className="email">Name: {name}</span>
             </Typography>
             <Typography>
-              <PhoneIcon className="cardIcons"/>
+              <AlternateEmailIcon className="cardIcons" />
+              <span className="email">Email: {email}</span>
+            </Typography>
+            <Typography>
+              <PhoneIcon className="cardIcons" />
               <span className="phone">Phone: {phone}</span>
             </Typography>
           </CardContent>
           <CardActions disableSpacing>
-            <IconButton aria-label="add to favorites">
+            <IconButton aria-label="add to favorites" onClick={onSetCurrent}>
               <EditIcon />
             </IconButton>
-            <IconButton aria-label="share">
+            <IconButton aria-label="share" onClick={onDeleteContact}>
               <DeleteIcon />
             </IconButton>
           </CardActions>
