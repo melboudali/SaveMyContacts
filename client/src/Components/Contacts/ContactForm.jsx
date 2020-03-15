@@ -12,7 +12,13 @@ import Radio from "@material-ui/core/Radio";
 
 const ContactForm = () => {
   const context = useContext(Context);
-  const { addContact, clearCurrent, current, updateContact } = context;
+  const {
+    addContact,
+    clearCurrent,
+    current,
+    updateContact,
+    contacts
+  } = context;
   useEffect(() => {
     current
       ? setContact(current)
@@ -29,10 +35,10 @@ const ContactForm = () => {
   };
   const onSubmit = e => {
     e.preventDefault();
-    if (current !== null) {
-      updateContact(getContact);
-    } else {
+    if (current === null) {
       addContact(getContact);
+    } else {
+      updateContact(getContact);
     }
     clearCurrent();
   };
@@ -125,7 +131,7 @@ const ContactForm = () => {
           <Button
             variant="contained"
             className="clearBtn"
-            onClick={()=>clearCurrent()}
+            onClick={() => clearCurrent()}
             fullWidth
           >
             <span className="textBtn">Clear</span>

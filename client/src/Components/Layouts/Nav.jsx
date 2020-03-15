@@ -15,19 +15,7 @@ import Hidden from "@material-ui/core/Hidden";
 import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    background: "linear-gradient(to right, #e53935, #e35d5b)",
-    opacity: ".7",
-    transition: "all 1.6s",
-    msTransition: "all 1.6s",
-    MozTransition: "all 1.6s",
-    height: "fit-content",
-    "&:hover": { opacity: "1" },
-    "& .MuiToolbar-regular": {
-      minHeight: "50px !important",
-      height: "50px !important"
-    }
-  },
+  
   menuButton: {
     marginRight: theme.spacing(2)
   },
@@ -44,7 +32,7 @@ const Nav = ({ title }) => {
 
   return (
     <Fragment>
-      <AppBar position="sticky" className={classes.root}>
+      <AppBar position="sticky" className="Navbar">
         <Container>
           <Toolbar>
             {/* Show on phone/tab */}

@@ -3,12 +3,30 @@ import ContactForm from "./ContactForm";
 import ContactItem from "./ContactItem";
 import Context from "../Context/Context/Context";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
+import ContactFilter from "./ContactFilter";
+import TransitionGroup from "react-transition-group/TransitionGroup";
+import CSSTransition from "react-transition-group/CSSTransition";
+import LoadingComp from "../Layouts/Loading";
 
 const Contacts = () => {
   const context = useContext(Context);
-  const { contacts, current } = context;
+  const { contacts, current, filtered, loading } = context;
+
+  const showLoading = () => {
+    if (loading) {
+      return <LoadingComp />;
+    }
+  };
+  const contactNotFound = () => {
+    if (filtered !== null && filtered.length === 0) {
+      return (
+        <CSSTransition timeout={1000} classNames="contact">
+          <h5>No Contact Founded</h5>
+        </CSSTransition>
+      );
+    }
+  };
   return (
     <Fragment>
       <Grid
@@ -30,9 +48,22 @@ const Contacts = () => {
           <Typography variant="h6" className="addConHeader">
             Contacts List
           </Typography>
-          {contacts.map(c => (
-            <ContactItem key={c.id} contact={c} />
-          ))}
+          <ContactFilter />
+          {showLoading()}
+          {contactNotFound()}
+          <TransitionGroup>
+            {filtered === null
+              ? contacts.map(c => (
+                  <CSSTransition key={c.id} timeout={1000} classNames="contact">
+                    <ContactItem contact={c} />
+                  </CSSTransition>
+                ))
+              : filtered.map(c => (
+                  <CSSTransition key={c.id} timeout={1000} classNames="contact">
+                    <ContactItem contact={c} />
+                  </CSSTransition>
+                ))}
+          </TransitionGroup>
         </Grid>
       </Grid>
     </Fragment>

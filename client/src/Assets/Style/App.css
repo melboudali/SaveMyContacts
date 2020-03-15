@@ -1,15 +1,60 @@
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #f8f8f8;
-}
-.App {
-  text-align: center;
+:root {
+  --bgColor: #2e3035;
+  --btnBg: #1bb76e;
+  --label-before: rgb(146, 146, 146);
+  --label-after: rgb(226, 226, 226);
+  --white-gray: rgb(226, 226, 226);
+  --dark-gray: #2e3035;
+  --dark-gray-white:#585c5e;
+  --red-color: #c04441;
+  --green-white: #1bb76e;
+  --paperBg: #3f434a;
 }
 
-.NavLink {
+html {
+  width: 100%;
+  overflow-y: overlay;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bgColor);
+}
+
+.Navbar {
+  background: var(--paperBg); /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    var(--dark-gray-white),
+    var(--paperBg)
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    var(--dark-gray-white),
+    var(--paperBg)
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  opacity: 0.8 !important;
+  transition: all 0.6s !important;
+  -moz-transition: all 0.6s !important;
+  -o-transition: all 0.6s !important;
+  -webkit-transition: all 0.6s !important;
+  height: fit-content !important;
+}
+.Navbar:hover {
+  opacity: 1 !important;
+}
+
+.Navbar .MuiToolbar-regular {
+  min-height: 50px !important;
+  height: 50px !important;
+}
+
+.Navbar .NavLink {
   margin-right: 10px !important;
-  color: #eee !important;
+  color: var(--white-gray) !important;
   font-weight: 500 !important;
   transition: all 1s !important;
 }
@@ -36,7 +81,20 @@ body {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+/* Tab */
+.paper {
+  background-color: var(--paperBg) !important;
+  text-align: center !important;
+}
 
+.tabs {
+  color: var(--label-after) !important;
+}
+
+.MuiTabs-indicator {
+  background-color: var(--btnBg) !important;
+}
+/*  */
 .contactType {
   color: rgb(255, 255, 255);
   padding: 3px 10px;
@@ -81,7 +139,7 @@ body {
   padding: 8px !important;
 }
 
-.addConHeader{
+.addConHeader {
   text-align: center;
   color: #6b6b6b;
   margin: 10px 0 !important;
@@ -105,22 +163,133 @@ body {
   opacity: 0.8;
 }
 
-.primaryBtn:hover, .clearBtn:hover {
+.primaryBtn:hover,
+.clearBtn:hover {
   opacity: 1;
 }
 
 .textBtn {
-  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.75);
   font-size: 0.8rem;
   margin-top: 2px;
   color: #eee;
 }
 
-.required {
-  color: red;
-  font-size: 1rem;
+/* Register */
+.addAccountCircleIcon {
+  width: 100% !important;
+  font-size: 5rem !important;
+  color: var(--btnBg) !important;
+}
+.alert {
+  display: inline-flex !important;
 }
 
+/* Login */
+/* Login Inputs */
+.inputClass {
+  margin: 0 0 10px 0 !important;
+}
+
+.inputClass .MuiInput-formControl {
+  margin-top: 16px !important;
+}
+
+.inputClass label {
+  color: var(--label-before) !important;
+}
+
+.inputClass label.Mui-focused {
+  color: var(--label-after) !important;
+}
+
+.inputClass .MuiInputBase-input {
+  padding: 0 0 10px 0 !important;
+}
+
+.inputClass .MuiInputBase-root {
+  color: var(--label-after) !important;
+}
+
+.inputClass .MuiInput-underline:before {
+  border-bottom-color: var(--label-before) !important;
+}
+
+.inputClass .MuiInput-underline:hover::before {
+  border-bottom-color: var(--label-before) !important;
+}
+
+.inputClass .MuiInput-underline:hover::after {
+  border-bottom-color: var(--btnBg) !important;
+}
+
+.inputClass .MuiInput-underline:after {
+  border-bottom-color: var(--btnBg) !important;
+}
+
+.pwdIcon {
+  color: var(--label-before) !important;
+}
+/*  */
+.loginFormBtn {
+  background-color: var(--btnBg) !important;
+  color: #eee !important;
+  width: 80% !important;
+  margin: 20px 0 !important;
+  opacity: 0.8 !important;
+  transition: all 0.5s !important;
+}
+.loginFormBtn:hover {
+  opacity: 1 !important;
+  width: 85% !important;
+  margin: 20px 0 !important;
+}
+.btnIcon {
+  margin-right: 5px !important;
+}
+.btnText {
+  font-size: 0.8rem !important;
+  margin-top: 2px !important;
+}
+.signinMessage {
+  color: var(--label-before) !important;
+  display: block !important;
+  text-align: left !important;
+  font-size: 0.7rem !important;
+}
+.required {
+  color: var(--red-color);
+  font-size: 1rem;
+}
+.requiredMsg {
+  color: var(--red-color) !important;
+  font-size: 0.8rem !important;
+}
+.requiredLabel {
+  color: var(--red-color) !important;
+  margin-left: 5px !important;
+}
+/* Alert Message */
+.MuiAlert-root {
+  padding: 0 16px !important;
+  margin: 1px 0 !important;
+}
+/* Contacts */
+/* Animation */
+.contact-enter {
+  opacity: 0;
+}
+.contact-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+.contact-exit {
+  opacity: 1;
+}
+.contact-exit-active {
+  opacity: 0;
+  transition: opacity 1000ms ease-in;
+}
+/* Add Contact Input */
 .addConInput {
   margin-bottom: 5px !important;
 }
@@ -153,11 +322,10 @@ body {
   border-bottom-color: rgb(48, 180, 108);
 }
 
-
-.conType{
+.conType {
   margin-top: 15px !important;
 }
 
-.radioBtn{
+.radioBtn {
   color: #f34d00;
 }

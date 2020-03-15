@@ -3,11 +3,7 @@ import Home from "./Components/Pages/Home";
 import "./Assets/Style/App.css";
 
 const App = () => {
-  return (
-    <Fragment>
-      <Home />
-    </Fragment>
-  );
+  return <Home />;
 };
 
 export default App;
