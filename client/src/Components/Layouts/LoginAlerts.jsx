@@ -4,10 +4,10 @@ import AlertContext from "../Context/Alert/AlertContext";
 
 const Alerts = () => {
   const alertContext = useContext(AlertContext);
-  const { alerts } = alertContext;
+  const { loginAlert } = alertContext;
   return (
-    alerts.length > 0 &&
-    alerts.map(alert => (
+    loginAlert.length > 0 &&
+    loginAlert.map(alert => (
       <Alert severity={alert.type} className="alert" key={alert.id}>
         {alert.msg}
       </Alert>

@@ -9,7 +9,7 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import PersonIcon from "@material-ui/icons/PersonSharp";
-import Alerts from "../Layouts/Alerts";
+import Alerts from "../Layouts/LoginAlerts";
 import AlertContext from "../Context/Alert/AlertContext";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Typography from "@material-ui/core/Typography";
@@ -19,7 +19,7 @@ const Signin = () => {
   const myContext = useContext(Context);
   const alertContext = useContext(AlertContext);
   const [getUser, setUser] = useState({ email: "", password: "" });
-  const { setAlert } = alertContext;
+  const { setLoginAlert } = alertContext;
   const { email, password } = getUser;
 
   const [showPassword, setshowPassword] = useState(false);
@@ -109,7 +109,7 @@ const Signin = () => {
       console.log("Password: ", password);
     } else {
       // Alert
-      setAlert("error", "Please fill in all required fields");
+      setLoginAlert("error", "Please fill in all required fields");
     }
   };
 

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AlertContext from "../Context/Alert/AlertContext";
-import Alerts from "../Layouts/Alerts";
+import Alerts from "../Layouts/RegisterAlerts";
 import Button from "@material-ui/core/Button";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
@@ -24,7 +24,7 @@ const Signup = () => {
 
   const { fName, email, firstPassword, secPassword } = getUser;
 
-  const { setAlert } = useContext(AlertContext);
+  const { setRegisterAlert } = useContext(AlertContext);
 
   const [fPassword, showFPassword] = useState(false);
   const [sPassword, showSPassword] = useState(false);
@@ -113,10 +113,10 @@ const Signup = () => {
         // Register
         console.log(getUser);
       } else {
-        setAlert("error", "Password do not match");
+        setRegisterAlert("error", "Password do not match");
       }
     } else {
-      setAlert("error", "Please fill in all required fields");
+      setRegisterAlert("error", "Please fill in all required fields");
     }
   };
 

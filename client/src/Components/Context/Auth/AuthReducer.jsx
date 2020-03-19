@@ -1,6 +1,4 @@
 import {
-  SET_ALERT,
-  REMOVE_ALERT,
   REGISTER_SUCCESS,
   RGISTER_FAIL,
   USER_LOADED,
@@ -13,10 +11,10 @@ import {
 
 const AuthReducer = (state, action) => {
     switch (action.type) {
-        case SET_ALERT:
-          return { ...state };
-        case REMOVE_ALERT:
-          return { ...state };
+        // case SET_ALERT:
+        //   return { ...state };
+        // case REMOVE_ALERT:
+        //   return { ...state };
         default:
           return state;
       }
