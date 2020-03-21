@@ -7,11 +7,17 @@ import {
   SET_LOGIN_ALERT,
   SET_REGISTER_ALERT,
   REMOVE_LOGIN_ALERT,
-  REMOVE_REGISTER_ALERT
+  REMOVE_REGISTER_ALERT,
+  CLEAR_ALERTS
 } from "../Types";
 
 const AlertState = props => {
-  const initialState = { loginAlert: [], registerAlert: [] };
+  const initialState = {
+    loginAlert: [],
+    registerAlert: [],
+    loginSuccess: null,
+    registerSuccess: null
+  };
   const [state, dispatch] = useReducer(AlertReducer, initialState);
 
   // SetLogin Alet
@@ -32,14 +38,22 @@ const AlertState = props => {
       timeout
     );
   };
+  //Remove all alerts
+  const clearRegisterAlerts = () => {
+    dispatch({ type: CLEAR_ALERTS });
+  };
+  //SetLoginSuccess
+
+  //SetRegisterSuccess
 
   return (
     <AlertContext.Provider
       value={{
         loginAlert: state.loginAlert,
         registerAlert: state.registerAlert,
+        setLoginAlert,
         setRegisterAlert,
-        setLoginAlert
+        clearRegisterAlerts
       }}
     >
       {props.children}

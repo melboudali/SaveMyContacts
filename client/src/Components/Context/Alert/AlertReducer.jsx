@@ -2,7 +2,8 @@ import {
   SET_LOGIN_ALERT,
   SET_REGISTER_ALERT,
   REMOVE_LOGIN_ALERT,
-  REMOVE_REGISTER_ALERT
+  REMOVE_REGISTER_ALERT,
+  CLEAR_ALERTS
 } from "../Types";
 
 const AlertReducer = (state, action) => {
@@ -27,6 +28,12 @@ const AlertReducer = (state, action) => {
         registerAlert: state.registerAlert.filter(
           alert => alert.id !== action.payload
         )
+      };
+    case CLEAR_ALERTS:
+      return {
+        ...state,
+        loginAlert: [],
+        registerAlert: []
       };
 
     default:

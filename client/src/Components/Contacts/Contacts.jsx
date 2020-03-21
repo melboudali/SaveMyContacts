@@ -1,4 +1,5 @@
-import React, { useContext, Fragment } from "react";
+import React, { useContext, Fragment, useEffect } from "react";
+import AuthContext from "../Context/Auth/AuthContext";
 import ContactForm from "./ContactForm";
 import ContactItem from "./ContactItem";
 import Context from "../Context/Context/Context";
@@ -10,9 +11,11 @@ import CSSTransition from "react-transition-group/CSSTransition";
 import LoadingComp from "../Layouts/Loading";
 
 const Contacts = () => {
-  const context = useContext(Context);
-  const { contacts, current, filtered, loading } = context;
-
+  const { contacts, current, filtered, loading } = useContext(Context);
+  const { loadUser } = useContext(AuthContext);
+  useEffect(() => {
+    loadUser();
+  }, []);
   const showLoading = () => {
     if (loading) {
       return <LoadingComp />;

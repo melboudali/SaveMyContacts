@@ -8,7 +8,7 @@ export const CLEAR_FILTER = "CLEAR_FILTER";
 export const SET_LOADING = "SET_LOADING";
 // AuthTypes
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
-export const RGISTER_FAIL = "RGISTER_FAIL";
+export const REGISTER_FAIL = "REGISTER_FAIL";
 export const USER_LOADED = "USER_LOADED";
 export const AUTH_ERROR = "AUTH_ERROR";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -20,4 +20,4 @@ export const SET_LOGIN_ALERT = "SET_LOGIN_ALERT";
 export const SET_REGISTER_ALERT = "SET_REGISTER_ALERT";
 export const REMOVE_LOGIN_ALERT = "REMOVE_LOGIN_ALERT";
 export const REMOVE_REGISTER_ALERT = "REMOVE_REGISTER_ALERT";
-
+export const CLEAR_ALERTS = "CLEAR_ALERTS";

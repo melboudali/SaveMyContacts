@@ -1,10 +1,18 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useContext } from "react";
+import AuthContext from "../Context/Auth/AuthContext";
 import { makeStyles } from "@material-ui/core/styles";
 import MyTabs from "./Tabs";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 
-const SignContainer = () => {
+const SignContainer = props => {
+  const { isAuthenticated } = useContext(AuthContext);
+  useEffect(() => {
+    if (isAuthenticated) {
+      props.history.push("/contacts");
+    }
+    // eslint-disable-next-line
+  }, [isAuthenticated, props.history]);
   // Theme and Styling
   const useStyles = makeStyles(theme => ({
     root: {

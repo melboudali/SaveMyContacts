@@ -1,6 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AlertContext from "../Context/Alert/AlertContext";
+import AuthContext from "../Context/Auth/AuthContext";
 import Alerts from "../Layouts/RegisterAlerts";
 import Button from "@material-ui/core/Button";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
@@ -24,7 +25,14 @@ const Signup = () => {
 
   const { fName, email, firstPassword, secPassword } = getUser;
 
-  const { setRegisterAlert } = useContext(AlertContext);
+  const { setRegisterAlert, clearRegisterAlerts } = useContext(AlertContext);
+  const { register, error, clearErrors } = useContext(AuthContext);
+  useEffect(() => {
+    if (error === "User already exist!")
+      setRegisterAlert("error", "User already exist!");
+    clearErrors();
+    // eslint-disable-next-line
+  }, [error]);
 
   const [fPassword, showFPassword] = useState(false);
   const [sPassword, showSPassword] = useState(false);
@@ -111,7 +119,8 @@ const Signup = () => {
     if (fName && email && firstPassword && secPassword) {
       if (firstPassword === secPassword) {
         // Register
-        console.log(getUser);
+        clearRegisterAlerts();
+        register({ name: fName, email, password: firstPassword });
       } else {
         setRegisterAlert("error", "Password do not match");
       }
