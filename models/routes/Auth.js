@@ -36,8 +36,8 @@ router.post(
     //Express Validator
     const errors = validationResult(req);
     if (!errors.isEmpty())
-      return res.status(400).json({ errors: errors.array() });
-    //Data contructor from req
+      return res.status(400).json({ msg: errors.array()[0].msg });
+    //Data constructor from req
     const { email, password } = req.body;
     try {
       let user = await User.findOne({ email });
@@ -49,7 +49,10 @@ router.post(
       //if we found the account then compare password with the hashed password
       const isMatch = await bcrypt.compare(password, user.password);
       //if the passwords doesnt match
-      if (!isMatch) return res.status(400).json({ msg: "Invalid Credentials" });
+      if (!isMatch)
+        return res
+          .status(400)
+          .json({ msg: "Invalid Credentials / Wrong Password" });
       //Create JWT token to sign in
       const payload = { user: { id: user.id } };
       //Generate jwt token and send it using

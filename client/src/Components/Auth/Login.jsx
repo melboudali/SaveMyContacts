@@ -1,4 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import AlertContext from "../Context/Alert/AlertContext";
+import AuthContext from "../Context/Auth/AuthContext";
+import Alerts from "../Layouts/LoginAlerts";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Input from "@material-ui/core/Input";
@@ -9,17 +12,21 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import PersonIcon from "@material-ui/icons/PersonSharp";
-import Alerts from "../Layouts/LoginAlerts";
-import AlertContext from "../Context/Alert/AlertContext";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Typography from "@material-ui/core/Typography";
 import Context from "../Context/Context/Context";
 
 const Signin = () => {
-  const myContext = useContext(Context);
-  const alertContext = useContext(AlertContext);
+  const { setLoginAlert, clearRegisterLoginAlerts } = useContext(AlertContext);
+  const { login, error, clearErrors } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (error) setLoginAlert("error", error);
+    clearErrors();
+    // eslint-disable-next-line
+  }, [error]);
+
   const [getUser, setUser] = useState({ email: "", password: "" });
-  const { setLoginAlert } = alertContext;
   const { email, password } = getUser;
 
   const [showPassword, setshowPassword] = useState(false);
@@ -83,18 +90,15 @@ const Signin = () => {
     }
   }));
 
-  const classes = useStyles();
-
   //Email Validation
   const onEmailChange = e => {
-    const email = e.target.value;
-    setUser({ ...getUser, email });
+    // TODO: Email Validator
+    setUser({ ...getUser, email: e.target.value });
   };
 
   //Password Validation
   const onPasswordChange = e => {
-    const password = e.target.value;
-    setUser({ ...getUser, password });
+    setUser({ ...getUser, password: e.target.value });
   };
 
   //PAssword Icon Handler
@@ -103,10 +107,10 @@ const Signin = () => {
   //Submit
   const loginSubmited = e => {
     e.preventDefault();
+    clearRegisterLoginAlerts();
     if (password && email) {
       // Login
-      console.log("Email: ", email);
-      console.log("Password: ", password);
+      login(getUser);
     } else {
       // Alert
       setLoginAlert("error", "Please fill in all required fields");
@@ -137,7 +141,11 @@ const Signin = () => {
           endAdornment={
             <InputAdornment position="end">
               <IconButton onClick={handleClickShowPassword}>
-                {showPassword ? <Visibility className="pwdIcon"/> : <VisibilityOff className="pwdIcon"/>}
+                {showPassword ? (
+                  <Visibility className="pwdIcon" />
+                ) : (
+                  <VisibilityOff className="pwdIcon" />
+                )}
               </IconButton>
             </InputAdornment>
           }

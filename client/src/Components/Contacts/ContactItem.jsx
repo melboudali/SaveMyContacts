@@ -13,12 +13,13 @@ import AlternateEmailIcon from "@material-ui/icons/AlternateEmail";
 import PhoneIcon from "@material-ui/icons/Phone";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 
-const ContactItem = ({ contact }) => {
+const ContactItem = ({ contact, handleClickOpen }) => {
   const { id, name, email, phone, type } = contact;
   const context = useContext(Context);
   const { deleteContact, setCurrent, clearCurrent } = context;
   const onSetCurrent = () => {
     setCurrent(contact);
+    handleClickOpen();
   };
   const onDeleteContact = () => {
     deleteContact(id);
@@ -51,12 +52,12 @@ const ContactItem = ({ contact }) => {
               <span className="phone">Phone: {phone}</span>
             </Typography>
           </CardContent>
-          <CardActions disableSpacing>
-            <IconButton aria-label="add to favorites" onClick={onSetCurrent}>
-              <EditIcon />
+          <CardActions>
+            <IconButton className="ContactItemBtn" aria-label="add to favorites" onClick={onSetCurrent} >
+              <EditIcon /> Edit
             </IconButton>
-            <IconButton aria-label="share" onClick={onDeleteContact}>
-              <DeleteIcon />
+            <IconButton className="ContactItemBtn" aria-label="share" onClick={onDeleteContact}>
+              <DeleteIcon /> Delete
             </IconButton>
           </CardActions>
         </Card>

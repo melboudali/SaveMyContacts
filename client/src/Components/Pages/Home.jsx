@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import PrivateRoute from "../Routes/PrivateRoutes";
 import Navbar from "../Layouts/Nav";
 import AuthContainer from "../Auth/AuthContainer";
 import Contacts from "../Contacts/Contacts";
@@ -15,7 +16,7 @@ const Home = () => {
           <Switch>
             <Route exact path="/" component={AuthContainer} />
             <Route exact path="/about" component={About} />
-            <Route exact path="/contacts" component={Contacts} />
+            <PrivateRoute exact path="/contacts" component={Contacts} />
           </Switch>
         </Container>
       </Fragment>

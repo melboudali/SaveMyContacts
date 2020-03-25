@@ -39,7 +39,7 @@ const AlertState = props => {
     );
   };
   //Remove all alerts
-  const clearRegisterAlerts = () => {
+  const clearRegisterLoginAlerts = () => {
     dispatch({ type: CLEAR_ALERTS });
   };
   //SetLoginSuccess
@@ -53,7 +53,7 @@ const AlertState = props => {
         registerAlert: state.registerAlert,
         setLoginAlert,
         setRegisterAlert,
-        clearRegisterAlerts
+        clearRegisterLoginAlerts
       }}
     >
       {props.children}

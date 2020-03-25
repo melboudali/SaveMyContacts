@@ -20,12 +20,10 @@ const ContactFilter = () => {
   };
   return (
     <form autoComplete="off" onSubmit={e => e.preventDefault()}>
-      <FormControl className="addConInput" fullWidth>
-        <InputLabel htmlFor="filter">Search</InputLabel>
+      <FormControl className="inputClass" fullWidth>
+        <InputLabel htmlFor="filter">Type Here To Search ...</InputLabel>
         <Input
           id="filter"
-          name="filter"
-          placeholder="Enter Something"
           type="text"
           inputRef={text}
           onChange={onChange}

@@ -5,7 +5,7 @@
   --label-after: rgb(226, 226, 226);
   --white-gray: rgb(226, 226, 226);
   --dark-gray: #2e3035;
-  --dark-gray-white:#585c5e;
+  --dark-gray-white: #585c5e;
   --red-color: #c04441;
   --green-white: #1bb76e;
   --paperBg: #3f434a;
@@ -13,11 +13,12 @@
 
 html {
   width: 100%;
-  overflow-y: overlay;
+  height: 100%;
 }
 
 body {
   width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
   background-color: var(--bgColor);
@@ -60,8 +61,8 @@ body {
 }
 
 .NavLink:hover {
-  color: rgb(255, 255, 255) !important;
-  background-color: #c04441 !important;
+  color: var(--btnBg) !important;
+  background: none !important;
 }
 
 .navICons {
@@ -93,6 +94,28 @@ body {
 
 .MuiTabs-indicator {
   background-color: var(--btnBg) !important;
+}
+/*  */
+/* Dialog */
+.MuiDialog-paper {
+  background-color: var(--paperBg) !important;
+}
+/* FAB */
+.fabContainer {
+  width: 100% !important;
+  height: max-content !important;
+  bottom: 10px !important;
+  position: sticky !important;
+  transition: all 1s !important;
+}
+.fab {
+  position: absolute !important;
+  right: 10px !important;
+  bottom: 10px !important;
+}
+.MuiFab-extended{
+  background-color: var(--btnBg) !important;
+  color: var(--white-gray) !important;
 }
 /*  */
 .contactType {
@@ -141,31 +164,35 @@ body {
 
 .addConHeader {
   text-align: center;
-  color: #6b6b6b;
-  margin: 10px 0 !important;
+  color: var(--white-gray) !important;
 }
 
 .addConForm {
   padding: 15px !important;
+  text-align: center;
 }
 
 .primaryBtn {
-  background: linear-gradient(to right, #ee0979, #ff6a00);
+  background-color: var(--btnBg) !important;
+  color: #eee !important;
+  width: 80% !important;
+  margin: 10px 0 !important;
+  opacity: 0.8 !important;
   transition: all 0.5s !important;
-  margin: 15px 0 !important;
-  opacity: 0.8;
 }
 
 .clearBtn {
   background-color: #c04441 !important;
+  color: #eee !important;
   transition: all 0.5s !important;
   margin: 0 !important;
+  width: 80% !important;
   opacity: 0.8;
 }
 
 .primaryBtn:hover,
 .clearBtn:hover {
-  opacity: 1;
+  opacity: 1 !important;
 }
 
 .textBtn {
@@ -270,8 +297,8 @@ body {
 }
 /* Alert Message */
 .MuiAlert-root {
-  padding: 0 16px !important;
-  margin: 1px 0 !important;
+  padding: 2px 16px !important;
+  margin: 1px 0 5px 0 !important;
 }
 /* Contacts */
 /* Animation */
@@ -283,49 +310,52 @@ body {
   transition: opacity 1000ms ease-in;
 }
 .contact-exit {
-  opacity: 1;
+  opacity: 1 !important;
 }
 .contact-exit-active {
-  opacity: 0;
-  transition: opacity 1000ms ease-in;
-}
-/* Add Contact Input */
-.addConInput {
-  margin-bottom: 5px !important;
+  opacity: 0 !important;
+  transition: opacity 1000ms ease-in !important;
 }
 
-.addConInput label {
-  color: #6b6b6b !important;
-}
-
-.addConInput label.Mui-focused {
-  color: #9c9c9c !important;
-}
-
-.addConInput .MuiInputBase-root {
-  color: #6b6b6b;
-}
-
-.addConInput .MuiInput-underline:before {
-  border-bottom-color: #df5858 !important;
-}
-
-.addConInput .MuiInput-underline:hover::after {
-  border-bottom-color: #00f396;
-}
-
-.addConInput .MuiInput-underline:hover::before {
-  border-bottom-color: #df5858 !important;
-}
-
-.addConInput .MuiInput-underline:after {
-  border-bottom-color: rgb(48, 180, 108);
-}
+/* Add Contact Form */
 
 .conType {
   margin-top: 15px !important;
+  text-align: left !important;
+  width: 100% !important;
+  color: var(--white-gray) !important;
+}
+
+.ContactItemBtn{
+  font-size: .8rem !important;
+  color: var(--dark-gray-white) !important;
+  border-radius: none !important;
+}
+
+.ContactItemBtn:hover{
+  color: var(--btnBg) !important;
+  background: none !important;
+}
+.MuiIconButton-root{
+  border-radius: 5px !important;
+}
+
+.radioTitle {
+  color: var(--white-gray) !important;
 }
 
 .radioBtn {
-  color: #f34d00;
+  color: var(--dark-gray-white) !important;
+}
+
+.radioBtn:active {
+  color: var(--btnBg) !important;
+}
+
+.Mui-checked {
+  color: var(--btnBg) !important;
+}
+
+.radioBtn:hover {
+  color: var(--btnBg) !important;
 }

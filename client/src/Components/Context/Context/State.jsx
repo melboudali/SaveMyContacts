@@ -11,8 +11,7 @@ import {
   CLEAR_CURRENT,
   UPDATE_CURRENT,
   FILTER_CONTACTS,
-  CLEAR_FILTER,
-  SET_LOADING
+  CLEAR_FILTER
 } from "../Types";
 
 const State = props => {
@@ -118,8 +117,7 @@ const State = props => {
       }
     ],
     current: null,
-    filtered: null,
-    loading: false
+    filtered: null
   };
   const [state, dispatch] = useReducer(Reducer, initialState);
 
@@ -140,23 +138,15 @@ const State = props => {
     dispatch({ type: UPDATE_CONTACT, payload: contact });
   //Filter Contacts
   const filterContacts = text => {
-    setLoading();
-    setTimeout(() => {
       dispatch({ type: FILTER_CONTACTS, payload: text });
-    }, 5000);
   };
   //Clear Filter
   const clearFilter = () => dispatch({ type: CLEAR_FILTER });
-  //Set Loading
-  const setLoading = () => {
-    dispatch({ type: SET_LOADING });
-  };
   return (
     <Context.Provider
       value={{
         contacts: state.contacts,
         addContact,
-        loading: state.loading,
         deleteContact,
         current: state.current,
         setCurrent,
@@ -164,8 +154,7 @@ const State = props => {
         updateContact,
         filtered: state.filtered,
         filterContacts,
-        clearFilter,
-        setLoading
+        clearFilter
       }}
     >
       {props.children}

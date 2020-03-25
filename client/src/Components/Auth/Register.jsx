@@ -25,7 +25,7 @@ const Signup = () => {
 
   const { fName, email, firstPassword, secPassword } = getUser;
 
-  const { setRegisterAlert, clearRegisterAlerts } = useContext(AlertContext);
+  const { setRegisterAlert, clearRegisterLoginAlerts } = useContext(AlertContext);
   const { register, error, clearErrors } = useContext(AuthContext);
   useEffect(() => {
     if (error === "User already exist!")
@@ -116,10 +116,10 @@ const Signup = () => {
 
   const onSubmit = e => {
     e.preventDefault();
+    clearRegisterLoginAlerts();
     if (fName && email && firstPassword && secPassword) {
       if (firstPassword === secPassword) {
         // Register
-        clearRegisterAlerts();
         register({ name: fName, email, password: firstPassword });
       } else {
         setRegisterAlert("error", "Password do not match");

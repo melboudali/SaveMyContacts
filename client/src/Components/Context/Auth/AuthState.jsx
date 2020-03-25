@@ -30,7 +30,7 @@ const AuthState = props => {
   // Load User
   const loadUser = async () => {
     // @TODO: load Token into global header
-    if(localStorage.token){
+    if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
     try {
@@ -39,6 +39,23 @@ const AuthState = props => {
     } catch (error) {
       dispatch({ type: AUTH_ERROR, payload: error.response.data.msg });
     }
+  };
+  // Login
+  const login = async formData => {
+    const config = {
+      headers: { "Content-Type": "application/json" }
+    };
+    try {
+      const res = await axios.post("api/auth", formData, config);
+      dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+      loadUser();
+    } catch (error) {
+      dispatch({ type: LOGIN_FAIL, payload: error.response.data.msg });
+    }
+  };
+  // Logout
+  const logout = () => {
+    dispatch({ type: LOGOUT });
   };
   //Register New User (REGISTER_SUCCESS/RGISTER_FAIL)
   const register = async formData => {
@@ -50,7 +67,7 @@ const AuthState = props => {
       dispatch({ type: REGISTER_SUCCESS, payload: res.data });
       loadUser();
     } catch (error) {
-      dispatch({ type: REGISTER_FAIL, payload: error.response.data.Msg });
+      dispatch({ type: REGISTER_FAIL, payload: error.response.data.msg });
     }
   };
 
@@ -84,6 +101,8 @@ const AuthState = props => {
         loading: state.loading,
         user: state.user,
         error: state.error,
+        login,
+        logout,
         register,
         clearErrors,
         loadUser

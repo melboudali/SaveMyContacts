@@ -1,5 +1,7 @@
 node_modules/
 
+# Config
+
 # dependencies
 /client/node_modules
 
