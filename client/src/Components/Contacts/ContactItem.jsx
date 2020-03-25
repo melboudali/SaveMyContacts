@@ -26,9 +26,9 @@ const ContactItem = ({ contact, handleClickOpen }) => {
     clearCurrent();
   };
   return (
-    <div>
-      <Paper elevation={3} style={{ marginBottom: "10px" }}>
-        <Card>
+    <>
+      <Paper elevation={3} className="ContactItem" >
+        <Card className="ContactItemCard">
           <CardContent>
             <Typography
               variant="caption"
@@ -41,15 +41,15 @@ const ContactItem = ({ contact, handleClickOpen }) => {
             </Typography>
             <Typography>
               <AssignmentIndIcon className="cardIcons" />
-              <span className="email">Name: {name}</span>
+              <span className="email"><span className="InfoType">Name:</span> {name}</span>
             </Typography>
             <Typography>
               <AlternateEmailIcon className="cardIcons" />
-              <span className="email">Email: {email}</span>
+              <span className="email"><span className="InfoType">Email:</span> {email}</span>
             </Typography>
             <Typography>
               <PhoneIcon className="cardIcons" />
-              <span className="phone">Phone: {phone}</span>
+              <span className="phone"><span className="InfoType">Phone:</span> {phone}</span>
             </Typography>
           </CardContent>
           <CardActions>
@@ -62,7 +62,7 @@ const ContactItem = ({ contact, handleClickOpen }) => {
           </CardActions>
         </Card>
       </Paper>
-    </div>
+    </>
   );
 };
 

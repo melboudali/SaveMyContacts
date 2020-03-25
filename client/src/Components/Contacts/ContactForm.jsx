@@ -52,6 +52,7 @@ const ContactForm = ({handleClose}) => {
           <Input
             id="name"
             type="text"
+            name="name"
             value={getContact.name}
             onChange={onChange}
             required
@@ -66,6 +67,7 @@ const ContactForm = ({handleClose}) => {
           <Input
             id="email"
             type="email"
+            name="email"
             value={getContact.email}
             onChange={onChange}
             required
@@ -79,6 +81,7 @@ const ContactForm = ({handleClose}) => {
           </InputLabel>
           <Input
             id="phone"
+            name="phone"
             value={getContact.phone}
             onChange={onChange}
             type="text"

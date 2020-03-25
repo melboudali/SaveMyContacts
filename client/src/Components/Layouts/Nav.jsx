@@ -2,6 +2,7 @@ import React, { Fragment, useContext } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import AuthContext from "../Context/Auth/AuthContext";
+import Context from "../Context/Context/Context";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -31,9 +32,11 @@ const useStyles = makeStyles(theme => ({
 
 const Nav = ({ title }) => {
   const { isAuthenticated, logout, user } = useContext(AuthContext);
+  const { clearContacts } = useContext(Context);
 
   const onLogout = () => {
     logout();
+    clearContacts();
   };
   const authNav = () => {
     return (

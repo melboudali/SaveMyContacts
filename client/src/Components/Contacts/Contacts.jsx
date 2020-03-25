@@ -1,5 +1,6 @@
 import React, { useState, useContext, Fragment, useEffect } from "react";
 import AuthContext from "../Context/Auth/AuthContext";
+import Alert from "@material-ui/lab/Alert";
 import ContactForm from "./ContactForm";
 import ContactItem from "./ContactItem";
 import Context from "../Context/Context/Context";
@@ -8,7 +9,6 @@ import Typography from "@material-ui/core/Typography";
 import ContactFilter from "./ContactFilter";
 import TransitionGroup from "react-transition-group/TransitionGroup";
 import CSSTransition from "react-transition-group/CSSTransition";
-import LoadingComp from "../Layouts/Loading";
 import Fab from "@material-ui/core/Fab";
 // Dialog
 import AddIcon from "@material-ui/icons/Add";
@@ -17,13 +17,20 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 
 const Contacts = () => {
-  const { contacts, current, filtered, loading, clearCurrent } = useContext(
-    Context
-  );
+  const {
+    getContacts,
+    contacts,
+    current,
+    filtered,
+    contactAlert,
+    clearCurrent
+  } = useContext(Context);
   const { loadUser } = useContext(AuthContext);
 
   useEffect(() => {
     loadUser();
+    getContacts();
+    // eslint-disable-next-line
   }, []);
 
   const [open, setOpen] = useState(false);
@@ -37,17 +44,11 @@ const Contacts = () => {
     clearCurrent();
   };
 
-  const showLoading = () => {
-    if (loading) {
-      return <LoadingComp />;
-    }
-  };
-
   const contactNotFound = () => {
     if (filtered !== null && filtered.length === 0) {
       return (
         <CSSTransition timeout={1000} classNames="contact">
-          <h5>No Contact Founded</h5>
+          <h5 className="NotFoundTitle">No Contacts Found!</h5>
         </CSSTransition>
       );
     }
@@ -79,31 +80,50 @@ const Contacts = () => {
         alignItems="flex-start"
         spacing={1}
       >
-        {/* <Grid item xs={8} sm={8} md={4} lg={4} xl={4}></Grid> */}
         <Grid item xs={10} sm={8} md={8} lg={5} xl={5}>
           {/* Contacts List */}
           <Typography variant="h6" className="addConHeader">
             Contacts List
           </Typography>
           <ContactFilter />
-          {showLoading()}
+          {contactAlert && (
+            <Alert severity={contactAlert.type} variant="filled" id="alert">
+              {contactAlert.msg}
+            </Alert>
+          )}
           {contactNotFound()}
-          <TransitionGroup>
-            {filtered === null
-              ? contacts.map(c => (
-                  <CSSTransition key={c.id} timeout={1000} classNames="contact">
-                    <ContactItem
-                      contact={c}
-                      handleClickOpen={handleClickOpen}
-                    />
-                  </CSSTransition>
-                ))
-              : filtered.map(c => (
-                  <CSSTransition key={c.id} timeout={1000} classNames="contact">
-                    <ContactItem contact={c} />
-                  </CSSTransition>
-                ))}
-          </TransitionGroup>
+          {contacts !== null ? (
+            <TransitionGroup>
+              {filtered === null
+                ? contacts.map(c => (
+                    <CSSTransition
+                      key={c._id}
+                      timeout={1000}
+                      classNames="contact"
+                    >
+                      <ContactItem
+                        contact={c}
+                        handleClickOpen={handleClickOpen}
+                      />
+                    </CSSTransition>
+                  ))
+                : filtered.map(c => (
+                    <CSSTransition
+                      key={c._id}
+                      timeout={1000}
+                      classNames="contact"
+                    >
+                      <ContactItem contact={c} />
+                    </CSSTransition>
+                  ))}
+            </TransitionGroup>
+          ) : (
+            <CSSTransition timeout={1000} classNames="contact">
+              <h5 className="NotFoundTitle">
+                No Contacts Found! Please Add New
+              </h5>
+            </CSSTransition>
+          )}
         </Grid>
       </Grid>
       <div className="fabContainer">
