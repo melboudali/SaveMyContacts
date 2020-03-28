@@ -8,7 +8,8 @@
     "pm2s": "pm2 stop all",
     "server": "nodemon Server.js",
     "client": "npm start --prefix client",
-    "all": "concurrently \"npm run server\" \"npm run client\""
+    "all": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "med",
   "license": "ISC",
