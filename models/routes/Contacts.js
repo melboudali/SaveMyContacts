@@ -94,7 +94,7 @@ router.put("/:id", auth, async (req, res) => {
   }
 });
 
-//@route    GET api/contacts/:id
+//@route    Delete api/contacts/:id
 //@desc     Delete contact
 //@access   Private
 router.delete("/:id", auth, async (req, res) => {

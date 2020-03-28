@@ -25,7 +25,9 @@ const Signup = () => {
 
   const { fName, email, firstPassword, secPassword } = getUser;
 
-  const { setRegisterAlert, clearRegisterLoginAlerts } = useContext(AlertContext);
+  const { setRegisterAlert, clearRegisterLoginAlerts } = useContext(
+    AlertContext
+  );
   const { register, error, clearErrors } = useContext(AuthContext);
   useEffect(() => {
     if (error === "User already exist!")

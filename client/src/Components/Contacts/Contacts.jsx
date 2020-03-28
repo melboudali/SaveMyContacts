@@ -15,6 +15,10 @@ import AddIcon from "@material-ui/icons/Add";
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
+import { Button } from "@material-ui/core";
+// Snackbar
+import Snackbar from "@material-ui/core/Snackbar";
+import Slide from '@material-ui/core/Slide';
 
 const Contacts = () => {
   const {
@@ -34,6 +38,7 @@ const Contacts = () => {
   }, []);
 
   const [open, setOpen] = useState(false);
+  const [snbOpen, snbSetOpen] = useState(true);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -53,6 +58,18 @@ const Contacts = () => {
       );
     }
   };
+
+  const snbHandleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    snbSetOpen(false);
+  };
+
+  function SlideTransition(props) {
+    return <Slide {...props} direction="up" />;
+  }
 
   return (
     <Fragment>
@@ -85,12 +102,38 @@ const Contacts = () => {
           <Typography variant="h6" className="addConHeader">
             Contacts List
           </Typography>
-          <ContactFilter />
-          {contactAlert && (
+          {/* Alerts */}
+          {/* {contactAlert && (
             <Alert severity={contactAlert.type} variant="filled" id="alert">
               {contactAlert.msg}
             </Alert>
+          )} */}
+          {contactAlert && (
+            <Snackbar
+              autoHideDuration={60000}
+              open={snbOpen}
+              TransitionComponent={SlideTransition}
+              onClose={snbHandleClose}
+            >
+              <Alert
+                onClose={snbHandleClose}
+                severity={contactAlert.type}
+                variant="filled"
+              >
+                {contactAlert.msg}
+              </Alert>
+            </Snackbar>
           )}
+          {/* Search */}
+          <ContactFilter />
+          {/* Add New Contact Btn */}
+          <Button
+            variant="contained"
+            onClick={handleClickOpen}
+            className="getStartedBtn"
+          >
+            <AddIcon /> <span className="btnText">Add New Contact!</span>
+          </Button>
           {contactNotFound()}
           {contacts !== null ? (
             <TransitionGroup>
@@ -126,16 +169,6 @@ const Contacts = () => {
           )}
         </Grid>
       </Grid>
-      <div className="fabContainer">
-        <Fab
-          variant="extended"
-          aria-label="add"
-          className="fab"
-          onClick={handleClickOpen}
-        >
-          <AddIcon /> Add Contact
-        </Fab>
-      </div>
     </Fragment>
   );
 };

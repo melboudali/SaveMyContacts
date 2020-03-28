@@ -6,10 +6,13 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 
 const SignContainer = props => {
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated, token, loadUser } = useContext(AuthContext);
   useEffect(() => {
-    if (isAuthenticated) {
-      props.history.push("/contacts");
+    if (token !== null) {
+      loadUser();
+      if (isAuthenticated) {
+        props.history.push("/contacts");
+      }
     }
     // eslint-disable-next-line
   }, [isAuthenticated, props.history]);

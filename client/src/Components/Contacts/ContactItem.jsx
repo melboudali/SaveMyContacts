@@ -14,7 +14,7 @@ import PhoneIcon from "@material-ui/icons/Phone";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 
 const ContactItem = ({ contact, handleClickOpen }) => {
-  const { id, name, email, phone, type } = contact;
+  const { _id, name, email, phone, type } = contact;
   const context = useContext(Context);
   const { deleteContact, setCurrent, clearCurrent } = context;
   const onSetCurrent = () => {
@@ -22,7 +22,7 @@ const ContactItem = ({ contact, handleClickOpen }) => {
     handleClickOpen();
   };
   const onDeleteContact = () => {
-    deleteContact(id);
+    deleteContact(_id);
     clearCurrent();
   };
   return (

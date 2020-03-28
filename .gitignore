@@ -1,9 +1,10 @@
+
+#ignore node modules
 node_modules/
+/client/node_modules/
 
-# Config
-
-# dependencies
-/client/node_modules
+# .env
+.env
 
 # testing
 /client/coverage

@@ -10,9 +10,13 @@
   --green-white: #1bb76e;
   --paperBg: #3f434a;
   --infoType: #b6b6b6;
+  --mongo: #1edb57;
+  --express: #da2057;
+  --react: #0099ff;
+  --node: #00bd3f;
 }
-
-#root{
+@import url("https://fonts.googleapis.com/css?family=Varela+Round&display=swap");
+#root {
   height: max-content !important;
 }
 
@@ -27,8 +31,65 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--bgColor);
+  font-family: "Varela Round", sans-serif;
 }
 
+/* Home */
+.homeSection {
+  position: relative;
+  width: 100%;
+  height: 80vh !important;
+  background-image: url("https://i.imgur.com/KrNIbFf.png");
+  background-position: center;
+  background-size: cover;
+  border-radius: 5px !important;
+  text-align: left;
+}
+.sectionTitle {
+  position: absolute;
+  width: 30% !important;
+  text-align: justify;
+  top: 50%;
+  transform: translate(0, -50%);
+  color: #eee !important;
+  left: 50px !important;
+}
+.sectionP {
+  color: var(--infoType) !important;
+  font-size: 0.8rem !important;
+}
+.tecs{
+  margin-top: 20px !important;
+}
+.M {
+  color: var(--mongo);
+}
+.MD {
+  margin-left: 5px;
+}
+.E {
+  color: var(--express);
+  margin-left: 5px;
+}
+.R {
+  color: var(--react);
+  margin-left: 5px;
+}
+.N {
+  color: var(--node);
+  margin-left: 5px;
+}
+.getStartedBtn{
+  background-color: var(--btnBg) !important;
+  color: #eee !important;
+  width: 100% !important;
+  opacity: 0.8 !important;
+  transition: all 0.5s !important;
+  margin: 20px 0 !important;
+}
+.getStartedBtn:hover {
+  opacity: 1 !important;
+}
 /* Navbar */
 .Navbar {
   background: var(--paperBg); /* fallback for old browsers */
@@ -108,26 +169,8 @@ body {
   background-color: var(--paperBg) !important;
 }
 
-/* FAB */
-.fabContainer {
-  width: 100% !important;
-  height: max-content !important;
-  bottom: 10px !important;
-  position: sticky !important;
-  transition: all 1s !important;
-}
-.fab {
-  position: absolute !important;
-  right: 10px !important;
-  bottom: 10px !important;
-}
-.MuiFab-extended {
-  background-color: var(--btnBg) !important;
-  color: var(--white-gray) !important;
-}
-
 /* Contacts */
-.NotFoundTitle{
+.NotFoundTitle {
   color: var(--infoType) !important;
   text-align: center !important;
 }
@@ -180,8 +223,8 @@ body {
   color: #fff !important;
 }
 
-.InfoType{
- color: var(--infoType) !important;
+.InfoType {
+  color: var(--infoType) !important;
 }
 
 .MuiCardContent-root {
@@ -201,7 +244,6 @@ body {
   color: var(--bgColor) !important;
   width: 50% !important;
   margin: 0 !important;
-  
 }
 
 .ContactItemBtn:hover {
@@ -262,8 +304,7 @@ body {
 
 #alert {
   margin: 5px 0 !important;
-} 
-
+}
 
 /* Login */
 /* Login Inputs */

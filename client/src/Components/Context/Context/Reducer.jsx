@@ -50,9 +50,11 @@ const Reducer = (state, action) => {
     case DELETE_CONTACT:
       return {
         ...state,
-        contacts: state.contacts.filter(c => c.id !== action.payload)
+        contacts: state.contacts.filter(c => c._id !== action.payload),
+        contactAlert: { type: "success", msg: "Contact Deleted" }
       };
-
+    case CONTACT_NOT_DELETED:
+      return { ...state, contactAlert: { type: "alert", msg: action.payload } };
     case SET_CURRENT:
       return { ...state, current: action.payload };
 
@@ -63,8 +65,9 @@ const Reducer = (state, action) => {
       return {
         ...state,
         contacts: state.contacts.map(contact =>
-          contact.id === action.payload.id ? action.payload : contact
-        )
+          contact._id === action.payload._id ? action.payload : contact
+        ),
+        contactAlert: { type: "success", msg: "Contact Edited" }
       };
 
     case FILTER_CONTACTS:

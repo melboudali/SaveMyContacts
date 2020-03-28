@@ -4,18 +4,18 @@
   "description": "contact keeper backend",
   "main": "Server.js",
   "scripts": {
-    "start": "nodemon Server.js",
-    "run": "pm2 start Server.js --watch",
-    "stop": "pm2 stop all",
-    "client":"npm start --prefix client",
-    "clientinstall":"npm install --prefix client",
-    "dev":"concurrently \"npm run start\" \"npm run client\""
+    "server": "nodemon Server.js",
+    "pm2run": "pm2 start Server.js --watch",
+    "pm2stop": "pm2 stop all",
+    "client": "npm start --prefix client",
+    "all": "concurrently \"npm run start\" \"npm run client\""
   },
   "author": "med",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^4.0.0",
     "config": "^3.3.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-validator": "^6.4.0",
     "jsonwebtoken": "^8.5.1",

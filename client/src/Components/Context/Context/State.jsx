@@ -39,7 +39,7 @@ const State = props => {
       const res = await axios.get("/api/contacts");
       dispatch({ type: GET_CONTACTS, payload: res.data });
     } catch (error) {
-      dispatch({type: GET_CONTACTS_ERROR, payload: error.response.msg});
+      dispatch({ type: GET_CONTACTS_ERROR, payload: error.response.msg });
     }
   };
 
@@ -58,16 +58,41 @@ const State = props => {
       dispatch({ type: CONTACT_NOT_ADDED, payload: error.response.msg });
     }
   };
+  //Update Contact
+  const updateContact = async contact => {
+    const config = {
+      headers: { "Content-Type": "application/json" }
+    };
+    try {
+      const res = await axios.put(`/api/contacts/${contact._id}`, contact, config);
+      dispatch({ type: UPDATE_CONTACT, payload: res.data });
+      setTimeout(() => {
+        dispatch({ type: CLEAR_CONTACT_ALERT });
+      }, 3000);
+    } catch (error) {
+      dispatch({ type: CONTACT_NOT_ADDED, payload: error.response.msg });
+    }
+    
+  };
+
   //Delete Contact
-  const deleteContact = cid => dispatch({ type: DELETE_CONTACT, payload: cid });
+  const deleteContact = async cid => {
+    try {
+      await axios.delete(`api/contacts/${cid}`);
+      dispatch({ type: DELETE_CONTACT, payload: cid });
+      setTimeout(() => {
+        dispatch({ type: CLEAR_CONTACT_ALERT });
+      }, 3000);
+    } catch (error) {
+      dispatch({ type: CONTACT_NOT_DELETED, payload: error.response.msg });
+    }
+  };
+
   //Set Curent Contact
   const setCurrent = contact =>
     dispatch({ type: SET_CURRENT, payload: contact });
   //Clear Current Contact
   const clearCurrent = () => dispatch({ type: CLEAR_CURRENT });
-  //Update Contact
-  const updateContact = contact =>
-    dispatch({ type: UPDATE_CONTACT, payload: contact });
   //Filter Contacts
   const filterContacts = text => {
     dispatch({ type: FILTER_CONTACTS, payload: text });
@@ -75,7 +100,7 @@ const State = props => {
   //Clear Filter
   const clearFilter = () => dispatch({ type: CLEAR_FILTER });
   // Clear Contacts
-  const clearContacts = () => dispatch({type: CLEAR_CONTACTS});
+  const clearContacts = () => dispatch({ type: CLEAR_CONTACTS });
 
   return (
     <Context.Provider
