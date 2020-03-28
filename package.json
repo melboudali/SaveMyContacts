@@ -4,6 +4,7 @@
   "description": "contact keeper backend",
   "main": "Server.js",
   "scripts": {
+    "start": "node server.js",
     "pm2": "pm2 start Server.js --watch",
     "pm2s": "pm2 stop all",
     "server": "nodemon Server.js",
