@@ -17,7 +17,7 @@ import Hidden from "@material-ui/core/Hidden";
 import Button from "@material-ui/core/Button";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
-import IconNav from "../../Assets/Images/contacts.png";
+import IconNav from "../../Assets/Images/icon.png";
 
 const useStyles = makeStyles(theme => ({
   menuButton: {
