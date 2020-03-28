@@ -8,7 +8,7 @@
     "pm2run": "pm2 start Server.js --watch",
     "pm2stop": "pm2 stop all",
     "client": "npm start --prefix client",
-    "all": "concurrently \"npm run start\" \"npm run client\""
+    "all": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "med",
   "license": "ISC",
