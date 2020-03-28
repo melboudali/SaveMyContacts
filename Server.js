@@ -13,7 +13,7 @@ app.use("/api/contacts", require("./models/Routes/Contacts"));
 //connect database
 connectDB();
 
-// Serve Static assets in production
+// Serve Static assets in production "idex.html"
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
   app.get("*", (req, res) => {
