@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const auth = require("../Midlleware/Auth");
-const User = require("../Schema/User");
-const Contact = require("../Schema/Contact");
+const auth = require("../models/Midlleware/Auth");
+const User = require("../models/Schema/User");
+const Contact = require("../models/Schema/Contact");
 
 //init midlleware
 router.use(express.json({ extended: false }));

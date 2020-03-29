@@ -7,8 +7,8 @@ require("dotenv").config();
 const PORT = process.env.PORT || 5000;
 
 // app.use("/api/users", require("./models/routes/users"));
-app.use("/api/auth", require("./models/routes/auth"));
-app.use("/api/contacts", require("./models/routes/contacts"));
+app.use("/api/auth", require("./routes/auth"));
+app.use("/api/contacts", require("./routes/contacts"));
 
 //connect database
 connectDB();

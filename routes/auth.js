@@ -3,8 +3,8 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const config = require("config");
-const auth = require("../Midlleware/Auth");
-const User = require("../Schema/User");
+const auth = require("../models/Midlleware/Auth");
+const User = require("../models/Schema/User");
 
 //init midlleware
 router.use(express.json({ extended: false }));
