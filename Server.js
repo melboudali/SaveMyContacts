@@ -6,12 +6,12 @@ require("dotenv").config();
 
 const PORT = process.env.PORT || 5000;
 
-// app.use("/api/users", require("./models/routes/users"));
-app.use("/api/auth", require("./routes/auth"));
-app.use("/api/contacts", require("./routes/contacts"));
-
 //connect database
 connectDB();
+
+app.use("/api/users", require("./routes/Users"));
+app.use("/api/auth", require("./routes/Auth"));
+app.use("/api/contacts", require("./routes/Contacts"));
 
 // Serve Static assets in production "idex.html"
 if (process.env.NODE_ENV === "production") {
@@ -21,4 +21,6 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.listen(PORT, () => console.log("Server Conected"));
+app.listen(PORT, err =>
+  err ? console.log(err) : console.log("Server Conected")
+);
