@@ -9,9 +9,9 @@ const PORT = process.env.PORT || 5000;
 //connect database
 connectDB();
 
-app.use("/api/users", require("./routes/Users"));
-app.use("/api/auth", require("./routes/Auth"));
-app.use("/api/contacts", require("./routes/Contacts"));
+app.use("/api/users", require("./routes/users"));
+app.use("/api/auth", require("./routes/auth"));
+app.use("/api/contacts", require("./routes/contacts"));
 
 // Serve Static assets in production "idex.html"
 if (process.env.NODE_ENV === "production") {
