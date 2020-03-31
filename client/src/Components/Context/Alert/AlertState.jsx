@@ -18,6 +18,7 @@ const AlertState = props => {
     loginSuccess: null,
     registerSuccess: null
   };
+  
   const [state, dispatch] = useReducer(AlertReducer, initialState);
 
   // SetLogin Alet
@@ -29,7 +30,8 @@ const AlertState = props => {
       timeout
     );
   };
-  // SetRegister Alert then remove
+
+  // SetRegister Alert
   const setRegisterAlert = (type, msg, timeout = 5000) => {
     const id = uuidv4();
     dispatch({ type: SET_REGISTER_ALERT, payload: { id, type, msg } });
@@ -38,13 +40,11 @@ const AlertState = props => {
       timeout
     );
   };
+
   //Remove all alerts
   const clearRegisterLoginAlerts = () => {
     dispatch({ type: CLEAR_ALERTS });
   };
-  //SetLoginSuccess
-
-  //SetRegisterSuccess
 
   return (
     <AlertContext.Provider
