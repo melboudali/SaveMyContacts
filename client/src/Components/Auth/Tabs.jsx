@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from "react";
-import SwipeableViews from 'react-swipeable-views';
+import SwipeableViews from "react-swipeable-views";
 import Signin from "./Login";
 import Signup from "./Register";
 import { makeStyles } from "@material-ui/core/styles";
@@ -53,16 +53,13 @@ const TabsComp = () => {
         <Tab label="LOGIN" icon={<PersonIcon />} {...a11yProps(0)} />
         <Tab label="REGISTER" icon={<PersonAddIcon />} {...a11yProps(1)} />
       </Tabs>
-      <SwipeableViews
-        index={value}
-        onChangeIndex={handleChange}
-      >
-      <TabPanel value={value} index={0} dir={'x'}>
-        <Signin />
-      </TabPanel>
-      <TabPanel value={value} index={1} dir={'x'}>
-        <Signup />
-      </TabPanel>
+      <SwipeableViews index={value} onChangeIndex={handleChange}>
+        <TabPanel value={value} index={0} dir={"x"}>
+          <Signin />
+        </TabPanel>
+        <TabPanel value={value} index={1} dir={"x"}>
+          <Signup />
+        </TabPanel>
       </SwipeableViews>
     </Fragment>
   );
