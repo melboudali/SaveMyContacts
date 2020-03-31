@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import AlertContext from "../Context/Alert/AlertContext";
 import AuthContext from "../Context/Auth/AuthContext";
+import { makeStyles } from "@material-ui/core/styles";
 import Alerts from "../Layouts/RegisterAlerts";
 import Button from "@material-ui/core/Button";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";

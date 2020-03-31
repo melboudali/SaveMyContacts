@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import AlertContext from "../Context/Alert/AlertContext";
 import AuthContext from "../Context/Auth/AuthContext";
-import Alerts from "../Layouts/LoginAlerts";
 import FormControl from "@material-ui/core/FormControl";
+import Alerts from "../Layouts/LoginAlerts";
 import InputLabel from "@material-ui/core/InputLabel";
 import Input from "@material-ui/core/Input";
 import InputAdornment from "@material-ui/core/InputAdornment";
