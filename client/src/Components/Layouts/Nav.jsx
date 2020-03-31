@@ -7,7 +7,6 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import ContactPhoneRoundedIcon from "@material-ui/icons/ContactPhoneRounded";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import ContactSupportOutlinedIcon from "@material-ui/icons/ContactSupportOutlined";
 import Typography from "@material-ui/core/Typography";
@@ -16,7 +15,6 @@ import Container from "@material-ui/core/Container";
 import Hidden from "@material-ui/core/Hidden";
 import Button from "@material-ui/core/Button";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import IconNav from "../../Assets/Images/icon.png";
 
 const useStyles = makeStyles(theme => ({
@@ -33,7 +31,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Nav = ({ title }) => {
-  const { isAuthenticated, logout, user } = useContext(AuthContext);
+  const { isAuthenticated, logout } = useContext(AuthContext);
   const { clearContacts } = useContext(Context);
 
   const onLogout = () => {
@@ -116,7 +114,7 @@ const Nav = ({ title }) => {
               </IconButton>
             </Hidden>
 
-            <img src={IconNav} className={classes.icon} />
+            <img src={IconNav} className={classes.icon} alt="Icon"/>
             <Typography variant="h6" className={classes.title}>
               {title}
             </Typography>

@@ -2,7 +2,6 @@ import React, { useState, Fragment } from "react";
 import SwipeableViews from "react-swipeable-views";
 import Signin from "./Login";
 import Signup from "./Register";
-import { makeStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import PersonIcon from "@material-ui/icons/PersonSharp";
