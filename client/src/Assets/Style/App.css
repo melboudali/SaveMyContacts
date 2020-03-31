@@ -15,6 +15,7 @@
   --react: #0099ff;
   --node: #00bd3f;
 }
+
 @import url("https://fonts.googleapis.com/css?family=Varela+Round&display=swap");
 #root {
   height: max-content !important;
@@ -45,6 +46,7 @@ body {
   border-radius: 5px !important;
   text-align: left;
 }
+
 .sectionTitle {
   position: absolute;
   width: 30% !important;
@@ -54,32 +56,40 @@ body {
   color: #eee !important;
   left: 50px !important;
 }
+
 .sectionP {
   color: var(--infoType) !important;
   font-size: 0.8rem !important;
 }
-.tecs{
+
+.tecs {
   margin-top: 20px !important;
 }
+
 .M {
   color: var(--mongo);
 }
+
 .MD {
   margin-left: 5px;
 }
+
 .E {
   color: var(--express);
   margin-left: 5px;
 }
+
 .R {
   color: var(--react);
   margin-left: 5px;
 }
+
 .N {
   color: var(--node);
   margin-left: 5px;
 }
-.getStartedBtn{
+
+.getStartedBtn {
   background-color: var(--btnBg) !important;
   color: #eee !important;
   width: 100% !important;
@@ -87,9 +97,11 @@ body {
   transition: all 0.5s !important;
   margin: 20px 0 !important;
 }
+
 .getStartedBtn:hover {
   opacity: 1 !important;
 }
+
 /* Navbar */
 .Navbar {
   background: var(--paperBg); /* fallback for old browsers */
@@ -300,8 +312,8 @@ body {
   font-size: 5rem !important;
   color: var(--btnBg) !important;
 }
-/* Alert Message */
 
+/* Alert Message */
 #alert {
   margin: 5px 0 !important;
 }
@@ -352,6 +364,7 @@ body {
   color: var(--label-before) !important;
 }
 /*  */
+
 .loginFormBtn {
   background-color: var(--btnBg) !important;
   color: #eee !important;
@@ -360,32 +373,39 @@ body {
   opacity: 0.8 !important;
   transition: all 0.5s !important;
 }
+
 .loginFormBtn:hover {
   opacity: 1 !important;
   width: 85% !important;
   margin: 20px 0 !important;
 }
+
 .btnIcon {
   margin-right: 5px !important;
 }
+
 .btnText {
   font-size: 0.8rem !important;
   margin-top: 2px !important;
 }
+
 .signinMessage {
   color: var(--label-before) !important;
   display: block !important;
   text-align: left !important;
   font-size: 0.7rem !important;
 }
+
 .required {
   color: var(--red-color);
   font-size: 1rem;
 }
+
 .requiredMsg {
   color: var(--red-color) !important;
   font-size: 0.8rem !important;
 }
+
 .requiredLabel {
   color: var(--red-color) !important;
   margin-left: 5px !important;
@@ -396,20 +416,22 @@ body {
 .contact-enter {
   opacity: 0;
 }
+
 .contact-enter-active {
   opacity: 1;
   transition: opacity 1000ms ease-in;
 }
+
 .contact-exit {
   opacity: 1 !important;
 }
+
 .contact-exit-active {
   opacity: 0 !important;
   transition: opacity 1000ms ease-in !important;
 }
 
 /* Add Contact Form */
-
 .conType {
   margin-top: 15px !important;
   text-align: left !important;
@@ -438,7 +460,6 @@ body {
 }
 
 /*scroll bar*/
-
 /* width */
 
 ::-webkit-scrollbar {
@@ -460,6 +481,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: var(--dark-gray-white);
+  border-radius: 10px;
 }
 
 /* Handle on hover */
