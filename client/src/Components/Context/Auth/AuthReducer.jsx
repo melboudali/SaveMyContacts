@@ -10,6 +10,7 @@ import {
 } from "../Types";
 
 const AuthReducer = (state, action) => {
+  
   switch (action.type) {
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
