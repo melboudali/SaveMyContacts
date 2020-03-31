@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <Router>
       <Fragment>
-        <Navbar title="Save My Contacts v1" />
+        <Navbar title="Save My Contacts" />
         <Container>
           <Switch>
             <Route exact path="/" component={HomePage} />
