@@ -9,17 +9,17 @@ import About from "../Pages/About";
 import Container from "@material-ui/core/Container";
 
 const Home = () => {
-  
   return (
     <Router>
       <Fragment>
         <Navbar title="Save My Contacts" />
         <Container>
           <Switch>
+            <PrivateRoute exact path="/contacts" component={Contacts} />
             <Route exact path="/" component={HomePage} />
             <Route exact path="/signin" component={AuthContainer} />
             <Route exact path="/about" component={About} />
-            <PrivateRoute exact path="/contacts" component={Contacts} />
+            <Route component={HomePage} />
           </Switch>
         </Container>
       </Fragment>
