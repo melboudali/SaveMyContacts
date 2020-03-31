@@ -23,6 +23,13 @@ const Reducer = (state, action) => {
         contacts: action.payload
       };
 
+    case ADD_CONTACT:
+      return {
+        ...state,
+        contacts: [action.payload, ...state.contacts],
+        contactAlert: { type: "success", msg: "Contact Added" }
+      };
+
     case GET_CONTACTS_ERROR:
     case CONTACT_NOT_ADDED:
     case CONTACT_NOT_DELETED:
@@ -30,13 +37,6 @@ const Reducer = (state, action) => {
       return {
         ...state,
         contactAlert: { type: "alert", msg: action.payload }
-      };
-
-    case ADD_CONTACT:
-      return {
-        ...state,
-        contacts: [action.payload, ...state.contacts],
-        contactAlert: { type: "success", msg: "Contact Added" }
       };
 
     case CLEAR_CONTACT_ALERT:
