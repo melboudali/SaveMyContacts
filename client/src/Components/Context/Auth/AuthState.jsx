@@ -5,8 +5,6 @@ import AuthReducer from "./AuthReducer";
 import setAuthToken from "../../../Utils/SetAuthToken";
 
 import {
-  SET_ALERT,
-  REMOVE_ALERT,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   USER_LOADED,
@@ -27,9 +25,9 @@ const AuthState = props => {
   };
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
+
   // Load User
   const loadUser = async () => {
-    // @TODO: load Token into global header
     if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
@@ -40,6 +38,7 @@ const AuthState = props => {
       dispatch({ type: AUTH_ERROR, payload: error.response.data.msg });
     }
   };
+
   // Login
   const login = async formData => {
     const config = {
@@ -53,11 +52,13 @@ const AuthState = props => {
       dispatch({ type: LOGIN_FAIL, payload: error.response.data.msg });
     }
   };
+
   // Logout
   const logout = () => {
     dispatch({ type: LOGOUT });
   };
-  //Register New User (REGISTER_SUCCESS/RGISTER_FAIL)
+
+  //Register New User
   const register = async formData => {
     const config = {
       headers: { "Content-Type": "application/json" }
@@ -71,28 +72,11 @@ const AuthState = props => {
     }
   };
 
-  // SetAlert
-
-  // RemoveAlert
-  const removeAlert = () => {};
-  // RegisterSuccess
-  const registerSuccess = () => {};
-  // RegisterFail
-  const registerFail = () => {};
-  // UserLoaded
-  const userLoaded = () => {};
-  // AuthError
-  const authError = () => {};
-  // LoginSuccess
-  const loginSuccess = () => {};
-  // LoginFail
-  const loginFail = () => {};
-  // Lougout
-  const lougout = () => {};
   // ClearErrors
   const clearErrors = () => {
     dispatch({ type: CLEAR_ERRORS });
   };
+
   return (
     <AuthContext.Provider
       value={{
