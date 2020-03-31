@@ -3,8 +3,8 @@ import Alert from "@material-ui/lab/Alert";
 import AlertContext from "../Context/Alert/AlertContext";
 
 const Alerts = () => {
-  const alertContext = useContext(AlertContext);
-  const { loginAlert } = alertContext;
+  const { loginAlert } = useContext(AlertContext);
+
   return (
     loginAlert.length > 0 &&
     loginAlert.map(alert => (

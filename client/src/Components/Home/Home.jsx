@@ -7,10 +7,12 @@ import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 
 const Home = () => {
   const { loadUser, token } = useContext(AuthContext);
+  
   useEffect(() => {
     if (token) loadUser();
     // esling-disable-next-line
   });
+
   return (
     <div className="homeSection">
       <div className="sectionTitle">

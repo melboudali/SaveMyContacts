@@ -16,6 +16,7 @@ import Hidden from "@material-ui/core/Hidden";
 import Button from "@material-ui/core/Button";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import IconNav from "../../Assets/Images/icon.png";
+import HomeIcon from "@material-ui/icons/Home";
 
 const useStyles = makeStyles(theme => ({
   menuButton: {
@@ -38,15 +39,10 @@ const Nav = ({ title }) => {
     logout();
     clearContacts();
   };
+
   const authNav = () => {
     return (
       <Fragment>
-        {/* <Button component={Link} to="/" color="inherit" className="NavLink">
-          <AccountBoxIcon className="navICons" />
-          <Typography variant="caption" className="LinkText">
-            {user && user.name}
-          </Typography>
-        </Button> */}
         <Button onClick={onLogout} color="inherit" className="NavLink">
           <ExitToAppIcon className="navICons" />
           <Typography variant="caption" className="LinkText">
@@ -67,6 +63,7 @@ const Nav = ({ title }) => {
       </Fragment>
     );
   };
+
   const gueastNav = () => {
     return (
       <Fragment>
@@ -95,6 +92,7 @@ const Nav = ({ title }) => {
       </Fragment>
     );
   };
+
   const classes = useStyles();
 
   return (
@@ -114,12 +112,23 @@ const Nav = ({ title }) => {
               </IconButton>
             </Hidden>
 
-            <img src={IconNav} className={classes.icon} alt="Icon"/>
+            <img src={IconNav} className={classes.icon} alt="Icon" />
             <Typography variant="h6" className={classes.title}>
               {title}
             </Typography>
             {/* Hide on phone/tab */}
             <Hidden only="xs">
+              <Button
+                component={Link}
+                to="/"
+                color="inherit"
+                className="NavLink"
+              >
+                <HomeIcon className="navICons" />
+                <Typography variant="caption" className="LinkText">
+                  home
+                </Typography>
+              </Button>
               {isAuthenticated ? authNav() : gueastNav()}
             </Hidden>
           </Toolbar>
@@ -134,4 +143,5 @@ Nav.propTypes = {
 };
 
 Nav.defaultProps = { title: "Save My Contacts" };
+
 export default Nav;
