@@ -2,19 +2,19 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 
 module.exports = (req, res, next) => {
-  //Get Token from Header
+  // Get the Token from the Header
   const token = req.header("x-auth-token");
 
-  //Check if not token
+  // Check if the http request does not contain the token
   if (!token)
     return res.status(401).json({ msg: "No Token, Authorization Denied" });
-  //if we have a token lets verify then
+
+  // if the request contain the token
   try {
-    //decoding our token and get the real id
+    // decoding the token and get the real id
     const decodedID = jwt.verify(token, config.get("jwtSecret"));
-    //give the decoded id to the created userId in req
+    // Add the id to the req
     req.userID = decodedID.user.id;
-    //then next
     next();
   } catch (error) {
     //invalid token
