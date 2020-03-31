@@ -15,19 +15,21 @@ import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 
 const ContactItem = ({ contact, handleClickOpen }) => {
   const { _id, name, email, phone, type } = contact;
-  const context = useContext(Context);
-  const { deleteContact, setCurrent, clearCurrent } = context;
+  const { deleteContact, setCurrent, clearCurrent } = useContext(Context);
+
   const onSetCurrent = () => {
     setCurrent(contact);
     handleClickOpen();
   };
+
   const onDeleteContact = () => {
     deleteContact(_id);
     clearCurrent();
   };
+  
   return (
     <>
-      <Paper elevation={3} className="ContactItem" >
+      <Paper elevation={3} className="ContactItem">
         <Card className="ContactItemCard">
           <CardContent>
             <Typography
@@ -41,22 +43,36 @@ const ContactItem = ({ contact, handleClickOpen }) => {
             </Typography>
             <Typography>
               <AssignmentIndIcon className="cardIcons" />
-              <span className="email"><span className="InfoType">Name:</span> {name}</span>
+              <span className="email">
+                <span className="InfoType">Name:</span> {name}
+              </span>
             </Typography>
             <Typography>
               <AlternateEmailIcon className="cardIcons" />
-              <span className="email"><span className="InfoType">Email:</span> {email}</span>
+              <span className="email">
+                <span className="InfoType">Email:</span> {email}
+              </span>
             </Typography>
             <Typography>
               <PhoneIcon className="cardIcons" />
-              <span className="phone"><span className="InfoType">Phone:</span> {phone}</span>
+              <span className="phone">
+                <span className="InfoType">Phone:</span> {phone}
+              </span>
             </Typography>
           </CardContent>
           <CardActions>
-            <IconButton className="ContactItemBtn" aria-label="add to favorites" onClick={onSetCurrent} >
+            <IconButton
+              className="ContactItemBtn"
+              aria-label="add to favorites"
+              onClick={onSetCurrent}
+            >
               <EditIcon /> Edit
             </IconButton>
-            <IconButton className="ContactItemBtn" aria-label="share" onClick={onDeleteContact}>
+            <IconButton
+              className="ContactItemBtn"
+              aria-label="share"
+              onClick={onDeleteContact}
+            >
               <DeleteIcon /> Delete
             </IconButton>
           </CardActions>
