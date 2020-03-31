@@ -20,8 +20,7 @@ const Reducer = (state, action) => {
     case GET_CONTACTS:
       return {
         ...state,
-        contacts: action.payload,
-        loading: false
+        contacts: action.payload
       };
 
     case GET_CONTACTS_ERROR:
