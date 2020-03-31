@@ -5,7 +5,6 @@ import AuthState from "./Components/Context/Auth/AuthState";
 import AlertState from "./Components/Context/Alert/AlertState";
 import App from "./App";
 
-// 
 ReactDOM.render(
   <AuthState>
     <State>
