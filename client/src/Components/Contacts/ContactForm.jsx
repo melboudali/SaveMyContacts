@@ -11,6 +11,7 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
 
 const ContactForm = ({ handleClose }) => {
+  
   const { addContact, clearCurrent, current, updateContact } = useContext(
     Context
   );

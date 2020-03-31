@@ -14,6 +14,7 @@ import PhoneIcon from "@material-ui/icons/Phone";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 
 const ContactItem = ({ contact, handleClickOpen }) => {
+  
   const { _id, name, email, phone, type } = contact;
   const { deleteContact, setCurrent, clearCurrent } = useContext(Context);
 

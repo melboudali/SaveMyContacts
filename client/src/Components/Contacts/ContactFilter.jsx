@@ -5,6 +5,7 @@ import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 
 const ContactFilter = () => {
+  
   const context = useContext(Context);
   const { filterContacts, clearFilter, filtered } = context;
 

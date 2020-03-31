@@ -9,7 +9,6 @@ import Typography from "@material-ui/core/Typography";
 import ContactFilter from "./ContactFilter";
 import TransitionGroup from "react-transition-group/TransitionGroup";
 import CSSTransition from "react-transition-group/CSSTransition";
-import Fab from "@material-ui/core/Fab";
 // Dialog
 import AddIcon from "@material-ui/icons/Add";
 import Dialog from "@material-ui/core/Dialog";
@@ -18,7 +17,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import { Button } from "@material-ui/core";
 // Snackbar
 import Snackbar from "@material-ui/core/Snackbar";
-import Slide from '@material-ui/core/Slide';
+import Slide from "@material-ui/core/Slide";
 
 const Contacts = () => {
   const {
@@ -102,12 +101,7 @@ const Contacts = () => {
           <Typography variant="h6" className="addConHeader">
             Contacts List
           </Typography>
-          {/* Alerts */}
-          {/* {contactAlert && (
-            <Alert severity={contactAlert.type} variant="filled" id="alert">
-              {contactAlert.msg}
-            </Alert>
-          )} */}
+          {/* Alerts Snackbar*/}
           {contactAlert && (
             <Snackbar
               autoHideDuration={60000}
