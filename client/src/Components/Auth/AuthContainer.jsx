@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect, useContext } from "react";
 import AuthContext from "../Context/Auth/AuthContext";
-import Paper from "@material-ui/core/Paper";
 import MyTabs from "./Tabs";
 import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
 
 const SignContainer = props => {
   const { isAuthenticated, token, loadUser } = useContext(AuthContext);
