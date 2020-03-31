@@ -24,11 +24,11 @@ const Signup = () => {
   });
 
   const { fName, email, firstPassword, secPassword } = getUser;
-
+  const { register, error, clearErrors } = useContext(AuthContext);
   const { setRegisterAlert, clearRegisterLoginAlerts } = useContext(
     AlertContext
   );
-  const { register, error, clearErrors } = useContext(AuthContext);
+
   useEffect(() => {
     if (error === "User already exist!")
       setRegisterAlert("error", "User already exist!");
@@ -80,6 +80,7 @@ const Signup = () => {
     }
   }));
 
+  // fName Handler
   const fnameChanged = e => {
     const fName = e.target.value;
     setUser({ ...getUser, fName });
@@ -88,6 +89,7 @@ const Signup = () => {
       : setUsernameColor("#c04441 !important");
   };
 
+  // Email Handler
   const emailChanged = e => {
     const email = e.target.value;
     setUser({ ...getUser, email });
@@ -96,6 +98,7 @@ const Signup = () => {
       : setEmailInputColor("#c04441 !important");
   };
 
+  // fPwd Handler
   const passwordChanged = e => {
     const firstPassword = e.target.value;
     setUser({ ...getUser, firstPassword });
@@ -104,6 +107,7 @@ const Signup = () => {
       : setFPwdInputColor("#c04441 !important");
   };
 
+  // sPwd Handler
   const secPasswordChanged = e => {
     const secPassword = e.target.value;
     setUser({ ...getUser, secPassword });
@@ -112,20 +116,17 @@ const Signup = () => {
       : setSPwdInputColor("#c04441 !important");
   };
 
+  // Pwd Icons Handler
   const handleClickShowPassword = () => showFPassword(!fPassword);
-
   const handleClickShowSecPassword = () => showSPassword(!sPassword);
 
   const onSubmit = e => {
     e.preventDefault();
     clearRegisterLoginAlerts();
     if (fName && email && firstPassword && secPassword) {
-      if (firstPassword === secPassword) {
-        // Register
-        register({ name: fName, email, password: firstPassword });
-      } else {
-        setRegisterAlert("error", "Password do not match");
-      }
+      firstPassword === secPassword
+        ? register({ name: fName, email, password: firstPassword })
+        : setRegisterAlert("error", "Password do not match");
     } else {
       setRegisterAlert("error", "Please fill in all required fields");
     }
@@ -137,7 +138,7 @@ const Signup = () => {
     <form autoComplete="off" onSubmit={onSubmit}>
       <AccountCircleIcon className="addAccountCircleIcon" />
       <Alerts />
-      {/* UserName input */}
+      {/* Full Name input */}
       <FormControl className={`inputClass ${classes.userInput}`} fullWidth>
         <InputLabel htmlFor="fullname">
           Full Name
@@ -155,7 +156,7 @@ const Signup = () => {
         <Input id="email" onChange={emailChanged} />
       </FormControl>
 
-      {/* Password input */}
+      {/* FirPassword input */}
       <FormControl className={`inputClass ${classes.passwordInput}`} fullWidth>
         <InputLabel htmlFor="fPassword">
           Password
@@ -180,7 +181,7 @@ const Signup = () => {
         />
       </FormControl>
 
-      {/* SecPassword */}
+      {/* SecPassword input */}
       <FormControl
         className={`inputClass ${classes.secPasswordInput}`}
         fullWidth
@@ -216,7 +217,11 @@ const Signup = () => {
         <span className="requiredMsg">*</span> Indicates Required Fields.
       </Typography>
       <Typography variant="caption" className="signinMessage">
-        By clicking on Sign up, you agree to our Terms and Conditions.
+        By clicking on Sign up, you agree to our
+        <a href="/signin" className="fPwd">
+          Terms and Conditions
+        </a>
+        .
       </Typography>
     </form>
   );

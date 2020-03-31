@@ -462,8 +462,13 @@ body {
 /*  */
 .AuthCont {
   position: "relative";
-  margin-top: 20px;
+  margin-top: 20px !important;
   transition: all 1s;
+}
+
+.fPwd{
+  color: var(--infoType);
+  margin-left: 5px;
 }
 
 /*scroll bar*/
