@@ -5,7 +5,6 @@ import ContactForm from "./ContactForm";
 import ContactItem from "./ContactItem";
 import Context from "../Context/Context/Context";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
 import ContactFilter from "./ContactFilter";
 import TransitionGroup from "react-transition-group/TransitionGroup";
 import CSSTransition from "react-transition-group/CSSTransition";
@@ -28,6 +27,7 @@ const Contacts = () => {
     contactAlert,
     clearCurrent
   } = useContext(Context);
+
   const { loadUser } = useContext(AuthContext);
 
   useEffect(() => {
@@ -62,7 +62,6 @@ const Contacts = () => {
     if (reason === "clickaway") {
       return;
     }
-
     snbSetOpen(false);
   };
 
@@ -97,11 +96,6 @@ const Contacts = () => {
         spacing={1}
       >
         <Grid item xs={10} sm={8} md={8} lg={5} xl={5}>
-          {/* Contacts List */}
-          <Typography variant="h6" className="addConHeader">
-            Contacts List
-          </Typography>
-          {/* Alerts Snackbar*/}
           {contactAlert && (
             <Snackbar
               autoHideDuration={60000}
@@ -129,7 +123,7 @@ const Contacts = () => {
             <AddIcon /> <span className="btnText">Add New Contact!</span>
           </Button>
           {contactNotFound()}
-          {contacts !== null ? (
+          {contacts !== null && contacts.length > 0 ? (
             <TransitionGroup>
               {filtered === null
                 ? contacts.map(c => (
@@ -150,7 +144,10 @@ const Contacts = () => {
                       timeout={1000}
                       classNames="contact"
                     >
-                      <ContactItem contact={c} />
+                      <ContactItem
+                        contact={c}
+                        handleClickOpen={handleClickOpen}
+                      />
                     </CSSTransition>
                   ))}
             </TransitionGroup>

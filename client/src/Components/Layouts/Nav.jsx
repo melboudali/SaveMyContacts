@@ -17,6 +17,7 @@ import Button from "@material-ui/core/Button";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import IconNav from "../../Assets/Images/icon.png";
 import HomeIcon from "@material-ui/icons/Home";
+import ContactsIcon from "@material-ui/icons/Contacts";
 
 const useStyles = makeStyles(theme => ({
   menuButton: {
@@ -43,6 +44,17 @@ const Nav = ({ title }) => {
   const authNav = () => {
     return (
       <Fragment>
+        <Button
+          component={Link}
+          to="/contacts"
+          color="inherit"
+          className="NavLink"
+        >
+          <ContactsIcon className="navICons" />
+          <Typography variant="caption" className="LinkText">
+            My Contacts
+          </Typography>
+        </Button>
         <Button onClick={onLogout} color="inherit" className="NavLink">
           <ExitToAppIcon className="navICons" />
           <Typography variant="caption" className="LinkText">

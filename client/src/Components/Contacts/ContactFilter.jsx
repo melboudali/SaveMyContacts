@@ -5,9 +5,7 @@ import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 
 const ContactFilter = () => {
-  
-  const context = useContext(Context);
-  const { filterContacts, clearFilter, filtered } = context;
+  const { filterContacts, clearFilter, filtered } = useContext(Context);
 
   const text = useRef("");
 
@@ -23,7 +21,7 @@ const ContactFilter = () => {
       clearFilter();
     }
   };
-  
+
   return (
     <form autoComplete="off" onSubmit={e => e.preventDefault()}>
       <FormControl className="inputClass" fullWidth>

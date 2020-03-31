@@ -33,7 +33,6 @@ const State = props => {
   // Get Contacts By token
   const getContacts = async () => {
     try {
-      state.loading = true;
       const res = await axios.get("/api/contacts");
       dispatch({ type: GET_CONTACTS, payload: res.data });
     } catch (error) {
