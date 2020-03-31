@@ -5,7 +5,6 @@ const config = require("config");
 const User = require("../models/Schema/User");
 const router = express.Router();
 
-//init midlleware
 router.use(express.json({ extended: false }));
 
 const { check, validationResult } = require("express-validator");
@@ -26,41 +25,46 @@ router.post(
     ).isLength({ min: 6 })
   ],
   async (req, res) => {
-    //Express Validator
+    // Express Validator
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    //Mongoose Schema
+
+    // Data Destructuring
     const { name, email, password } = req.body;
+
     try {
-      //Search for the email in mongodb
+      // Check if we have this email in our DB
       let user = await User.findOne({ email });
       if (user) {
-        //if we found the email
+        // if we found the email
         return res.status(400).json({ msg: "User already exist!" });
       }
-      //if we didnt found the email we will added new user
+
+      // if not we will add new user
       user = new User({ name, email, password });
-      //Bcrypt and hash password
+
+      // Bcrypt and hash the password
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt);
-      //Added the user to our DB
+
+      // Added the user to our DB
       await user.save();
-      //Create JWT token to sign in
+
+      // Create JWT token and send it back (expiresIn: 24h)
       const payload = { user: { id: user.id } };
-      //Generate jwt token and send it using
       jwt.sign(
         payload,
         config.get("jwtSecret"),
-        { expiresIn: 360000 },
+        { expiresIn: 86400000 },
         (err, token) => {
           if (err) throw err;
           res.json({ token });
         }
       );
+      
     } catch (error) {
-      console.error(error.message);
       res.status(500).send("Server Error");
     }
   }

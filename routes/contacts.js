@@ -1,11 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const auth = require("../models/Midlleware/Auth");
-const User = require("../models/Schema/User");
 const Contact = require("../models/Schema/Contact");
 
-//init midlleware
 router.use(express.json({ extended: false }));
+
 const { check, validationResult } = require("express-validator");
 
 //@route    GET api/contacts
@@ -18,7 +17,6 @@ router.get("/", auth, async (req, res) => {
     });
     res.json(Contacts);
   } catch (error) {
-    console.log(error);
     res.status(500).json("Server Error");
   }
 });
@@ -31,7 +29,7 @@ router.post(
   [
     auth,
     [
-      check("name", "Please insert name")
+      check("name", "Please insert Name")
         .not()
         .isEmpty(),
       check("email", "Please insert email").isEmail()
@@ -41,6 +39,7 @@ router.post(
     const errors = validationResult(req);
     if (!errors.isEmpty())
       return res.status(401).json({ errors: errors.array() });
+
     const { name, email, phone, type } = req.body;
     try {
       const contacts = new Contact({
@@ -53,7 +52,6 @@ router.post(
       await contacts.save();
       res.json(contacts);
     } catch (error) {
-      console.log(error);
       res.status(500).send("Server Error");
     }
   }
@@ -63,23 +61,27 @@ router.post(
 //@desc     Update contact
 //@access   Private
 router.put("/:id", auth, async (req, res) => {
-  //contact data destractor
+  // Contact Data Destructuring / Init contactFields
   const { name, email, phone, type } = req.body;
   const contactFields = {};
-  //Add new data to the contactFields object
+
+  // Add new data to the contactFields object
   if (name) contactFields.name = name;
   if (email) contactFields.email = email;
   if (phone) contactFields.phone = phone;
   if (type) contactFields.type = type;
   contactFields.date = Date.now();
+
   try {
-    //Check if we have the contact by id
+    // Check if we have the contact by id
     let contact = await Contact.findById(req.params.id);
     if (!contact) return res.status(404).json({ msg: "Contact not found" });
-    //make sure the user on the contact
+
+    // make sure we have the Auth
     if (contact.userID.toString() !== req.userID)
       return res.status(401).json({ msg: "Not Authorized" });
-    //edit the contact or add new one
+
+    // Edit the contact
     contact = await Contact.findByIdAndUpdate(
       req.params.id,
       {
@@ -89,7 +91,6 @@ router.put("/:id", auth, async (req, res) => {
     );
     res.json(contact);
   } catch (error) {
-    console.log(error);
     res.status(500).send("Server Error");
   }
 });
@@ -106,7 +107,6 @@ router.delete("/:id", auth, async (req, res) => {
     await Contact.findByIdAndDelete(req.params.id);
     res.json({ msg: "Contact Deleted", Contact: contact });
   } catch (error) {
-    console.log(error);
     res.status(500).send("Server Error");
   }
 });
