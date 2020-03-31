@@ -459,6 +459,14 @@ body {
   color: var(--btnBg) !important;
 }
 
+/*  */
+.AuthCont {
+  position: "relative";
+  margin-top: 20px;
+  transition: all 1s;
+}
+/*  */
+
 /*scroll bar*/
 /* width */
 
