@@ -7,13 +7,10 @@ import {
   UPDATE_CONTACT,
   SET_CURRENT,
   CLEAR_CURRENT,
-  UPDATE_CURRENT,
   FILTER_CONTACTS,
   CLEAR_FILTER,
   CONTACT_NOT_ADDED,
-  CONTACT_EDITED,
   CONTACT_NOT_EDITED,
-  CONTACT_DELETED,
   CONTACT_NOT_DELETED,
   CLEAR_CONTACT_ALERT
 } from "../Types";
@@ -26,35 +23,36 @@ const Reducer = (state, action) => {
         contacts: action.payload,
         loading: false
       };
+
     case GET_CONTACTS_ERROR:
+    case CONTACT_NOT_ADDED:
+    case CONTACT_NOT_DELETED:
+    case CONTACT_NOT_EDITED:
       return {
         ...state,
-        contactAlert: action.payload
+        contactAlert: { type: "alert", msg: action.payload }
       };
+
     case ADD_CONTACT:
       return {
         ...state,
         contacts: [action.payload, ...state.contacts],
         contactAlert: { type: "success", msg: "Contact Added" }
       };
-    case CONTACT_NOT_ADDED:
-      return {
-        ...state,
-        contactAlert: { type: "alert", msg: action.payload }
-      };
+
     case CLEAR_CONTACT_ALERT:
       return {
         ...state,
         contactAlert: null
       };
+
     case DELETE_CONTACT:
       return {
         ...state,
         contacts: state.contacts.filter(c => c._id !== action.payload),
         contactAlert: { type: "success", msg: "Contact Deleted" }
       };
-    case CONTACT_NOT_DELETED:
-      return { ...state, contactAlert: { type: "alert", msg: action.payload } };
+
     case SET_CURRENT:
       return { ...state, current: action.payload };
 
@@ -78,11 +76,13 @@ const Reducer = (state, action) => {
           return contact.name.match(regEx) || contact.email.match(regEx);
         })
       };
+
     case CLEAR_FILTER:
       return {
         ...state,
         filtered: null
       };
+
     case CLEAR_CONTACTS:
       return {
         ...state,
