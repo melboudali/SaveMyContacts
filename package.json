@@ -1,7 +1,7 @@
 {
   "name": "nodejs",
   "version": "1.0.0",
-  "description": "contact keeper backend",
+  "description": "A free M E R N application to save contacts informations.",
   "main": "Server.js",
   "scripts": {
     "start": "node Server.js",
@@ -12,7 +12,7 @@
     "all": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
-  "author": "med",
+  "author": "MedELBOUDALI",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^4.0.1",
