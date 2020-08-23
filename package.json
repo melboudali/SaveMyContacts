@@ -15,7 +15,7 @@
   "author": "MedELBOUDALI",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^4.0.1",
+    "bcrypt": "^5.0.0",
     "config": "^3.3.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
